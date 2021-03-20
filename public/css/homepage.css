@@ -1,0 +1,149 @@
+/*Nav bar stuff*/
+
+.nav-sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.navbar-custom {
+    background-color: #212D94;
+}
+
+.navbar-custom .navbar-text {
+    color: white;
+}
+
+body {
+    background-color: #23272A;
+    padding-bottom: 0;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: grey;
+    text-align: left;
+}
+
+.form_container {
+    padding-top: 10px;
+    padding: 20px 30px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 0 10px 0 #000;
+}
+
+.main {
+    width: 80%;
+    float: left;
+}
+
+.flex-container {
+    display: flex;
+    min-height: 100%;
+    padding-top: 10px;
+}
+
+/*both of them*/
+
+.flex-child {
+    flex: 1;
+    height: 100%;
+    border: 2px solid #23272A;
+    top: 0;
+    position: relative;
+}
+
+/*Left Column */
+
+.flex-child:first-child {
+    top: 12.5%;
+    height: 40vh;
+}
+
+/* middle column*/
+
+.columnGeneral {
+    width: 60vw;
+}
+
+.flex-child:nth-child(2) {
+    top: 1.5%;
+    height: 90vh;
+    align-items: center;
+}
+
+.cardUserPost {
+    width: 50vw !important;
+    margin-top: 20px;
+}
+
+.cardGeneralPost {
+    width: 50vw !important;
+    margin-top: 20px;
+}
+
+.hrLineCreatePost {
+    margin-top: 10px;
+}
+
+textarea {
+    resize: none;
+}
+
+/*right column*/
+
+.flex-child:last-child {
+    top: 12.5%;
+    height: 40vh;
+}
+
+.setting_btn {
+    color: Black;
+    height: 50px;
+    width: 60px;
+}
+
+
+/*----------------------------------------Middle Col Properties----------------------------------------*/
+/*Start*/
+.middleColGeneral {
+    
+    width: 60vw;
+    height: 100vh;
+    overflow-y: scroll;
+    
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.middleColGeneral::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.middleColGeneral {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+/*End*/
+
+
+/*----------------------------------------User ToolBox Properties----------------------------------------*/
+/*Start*/
+.toolBoxGeneral {
+    margin-top: 20px;
+    margin-left: 40px;
+    width: 500px;
+    height: 450px;
+    background-color: white;
+}
+
+/*End*/
+
+.mainDiv{
+    width: 100%;
+    height: 100%;
+}
