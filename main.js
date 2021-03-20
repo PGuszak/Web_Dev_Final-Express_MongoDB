@@ -14,6 +14,7 @@ app.use(layouts);
 
 
 //default loader change to main page
+app.get("/", homeController.showSignUp)  //this is what renders first in the layout.ejs file
 //app.get("/",);
 
 //pre processing requests

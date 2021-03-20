@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<meta charset="utf-8" />
+	<title>Orbit Sign In</title>
+
+</head>
+
+<body>
+
+	<header>
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+			integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="css/signin.css">
+	</header>
+
+	<div class="form_container">
+		<div>
+			<img src="/images/OrbitBanner.png" alt="Lights" class="center">
+		</div>
+
+		<form>
+			<ul class="list">
+				<li>
+					<h2 class="LoginHeading">Account Login</h2>
+				</li>
+				<li class="input"><input type="text" name="username" placeholder="Username" required></li>
+				<li class="input"><input type="password" name="password" placeholder="Password"></li>
+
+				<li>
+					<div class="btn-container " id="menu">
+						<ul>
+							<li class="list-inline">
+								<input style="width: 30%" type="submit" class="btn-inline submit-button" name="submit"
+									value="Sign In">
+							</li>
+							<li class="list-inline">
+								<input style="width: 30%" type="reset" class="submit-button btn-inline" name="Reset"
+									value="Reset">
+							</li>
+						</ul>
+					</div>
+				</li>
+				
+
+				<!--Remeber Me + Password-->
+				<li class="w-auto">
+					<div class="w-auto form-group row">
+						<div class="col-md-10" style="padding-top: 10px">
+							<input type="checkbox" class="col-md-1">
+							<span style="padding-left: 5px">Remember me</span>
+							<input type="button" class="button2" id="forgotPass" value="Forgot password">
+						</div>
+					</div>
+				</li>
+
+				<!---->
+				<li>
+					<span>Dont have an account?</span>
+					<div>
+						<a class="signupbutton" href="url">Create Account</a>
+					</div>
+					
+				</li>
+			</ul>
+		</form>
+	</div>
+
+
+
+	<footer class="footer">
+		Copyright @2021 Orbit - A CeRaTech, Subscorpion, Vivanator Collaberation
+	</footer>
+
+
+	<script src="js/jquery-3.5.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/script.js"></script>
+</body>
+
+</html>
