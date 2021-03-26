@@ -9,44 +9,49 @@ function validateForm(){
     var lowerCaseLetters = /[a-z]/;
     var upperCaseLetters = /[A-Z]/;
     var numbers = /[0-9]/;
-    var notaloud = /[<>#-{}()'"`]/;
+    var notaloud = /['<>#-{}()"`']/;
 
     //main body variables
-    var firstName = document.getElementById("txtFirstname");
-    var lastName = document.getElementById("txtLastname");
-    var User = document.getElementById("txtuser");
-    var Email = document.getElementById("txtemail");
-    var password = document.getElementById("txtPassword");
-    var Vpassword = document.getElementById("confirmPassword");
-    var DOB = document.getElementById("DateDOB");
+    var firstName = document.getElementById("firstName");
+    var lastName = document.getElementById("lastName");
+    var User = document.getElementById("Username");
+    var Email = document.getElementById("Email");
+    var password = document.getElementById("Password");
+    var Vpassword = document.getElementById("VPassword");
+    var DOB = document.getElementById("DOB");
     var docError = document.getElementById("submitError");
  
     //security question variables
-    var Sec1Question = document.getElementById("Security1");
-    var Sec1Ans = document.getElementById("textSecurity1");
-    var Sec2Question = document.getElementById("Security2");
-    var Sec2Ans = document.getElementById("textSecurity2");
-    var Sec3Question = document.getElementById("Security3");
-    var Sec3Ans = document.getElementById("textSecurity3");
+    var Sec1Question = document.getElementById("SecurityQ1");
+    var Sec1Ans = document.getElementById("SecurityA1");
+    var Sec2Question = document.getElementById("SecurityQ2");
+    var Sec2Ans = document.getElementById("SecurityA2");
+    var Sec3Question = document.getElementById("SecurityQ3");
+    var Sec3Ans = document.getElementById("SecurityA3");
 
 
-    //no special characters in any text feilds
+    //no special characters in any text feilds   BROKEN!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     if(firstName.value.match(notaloud) || lastName.value.match(notaloud) ||
-     User.value.match(notaloud) || Email.value.match(notaloud) ||
-     password.value.match(notaloud) || Vpassword.value.match(notaloud) ||
-     Sec1Ans.value.match(notaloud) || Sec2Ans.value.match(notaloud) ||
-     Sec3Ans.value.match(notaloud)){
+        User.value.match(notaloud) || Email.value.match(notaloud) ||
+        password.value.match(notaloud)){
         docError.classList.remove("invisible");
         docError.innerHTML = "Feilds cannot contain any of these special characters:   " + '<>#-{}()"`' + "'";
-        return false;   
+        console.log(firstName.value);
+        console.log(lastName.value);
+        console.log(User.value);
+        console.log(email.value)
+        console.log(password.value);
+        console.log(Vpassword.value);
+        return false;
     }
 
     //if empty
     else if(firstName.value == "" || lastName.value == "" || User.value == "" || Email == ""
-     || DOB.value == "")
+     || DOB.value == "" || Sec1Ans.value == "" || Sec2Ans.value == "" || Sec3Ans.value == "")
     {
         docError.classList.remove("invisible");
         docError.innerHTML = "There are required feilds that are empty";
+        console.log("There are feilds that are empty!")
         return false;
     }
 
@@ -99,7 +104,7 @@ function validateForm(){
 
 //make three on change functions for secturity questions so when chosen the feild is visible
 function securitychange1(){
-    var Security1 = document.getElementById("Security1");
+    var Security1 = document.getElementById("SecurityQ1");
     var txtSecurity1 = document.getElementById("diTxtvSecurity1");
     if(Security1.value == "NoValid"){
         txtSecurity1.classList.add("invisible");
@@ -111,9 +116,9 @@ function securitychange1(){
 }
 
 function securitychange2(){
-    var sec2question = document.getElementById("Security2");
+    var sec2question = document.getElementById("SecurityQ2");
     var divSecurity2 = document.getElementById("divSecurity2");
-    if(sec2question.value == "No"){
+    if(sec2question.value == "NoValid"){
         divSecurity2.classList.add("invisible");
     }
     else{
@@ -123,7 +128,7 @@ function securitychange2(){
 }
 
 function securitychange3(){
-    var Security3 = document.getElementById("Security3");
+    var Security3 = document.getElementById("SecurityQ3");
     var txtSecurity3 = document.getElementById("divSecurity3");
     if(Security3.value == "NoValid"){
         txtSecurity3.classList.add("invisible");

@@ -31,6 +31,11 @@ All pages are responsive to screen sizes and there is good formatting so informa
 
 Using the HTML checker for errors there are no errors that are harming the working functionality and is clear.  Please contact Paul if there are questions about future/current errors in HTML checker for explanation.
 
+
+JUSTIGY WHY WE HAVE NO NAV BAR ON SIGNUP AND SIGNIN
+-BUT HAVE THE NAV BAR TEMPLATIZED IN ANOTHER EJS FOR THE OTHER PAGES 
+-look up what layout can be applied to ejs templates
+
 ## EXTRA FEATURES
   This version there are extra styles for better UI experience. On the signup page there are red highlights for better user experience.  This meaning there are red highlights to indicate which of the fields are required for sign up and to explicitly show the ones that are not required.  And the fields that are optional are in black/grey. As well as some simple touches added in to show responsiveness to the whole page. When a entry box is selected the barrier and color become more apparent when selected. As well as when the cursor from the user hover overs the user entry box the box will highlight in its specific color to show prominence.  
 

@@ -1,4 +1,8 @@
 /* General Structure stuff*/
+html{
+    background-color:#04046c;
+}
+
 .footer {
     position: fixed;
     left: 0;
@@ -6,7 +10,8 @@
     width: 100%;
     color: grey;
     text-align: left;
-    }
+    background-color:#04046c;
+}
 
 body{
     background-color: #04046c;
@@ -133,6 +138,13 @@ ul.list li input{
     position: relative;
     right: 35px;
     left: -40px;
+}
+
+.signinbutton {
+    color: blue;
+    text-decoration: underline;
+    right: -400px;
+    background-color: white;
 }
 
 

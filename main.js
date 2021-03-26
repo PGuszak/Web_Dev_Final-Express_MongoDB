@@ -3,9 +3,11 @@
 const express = require("express"), app = express(),
 homeController = require("./controllers/homeControllers"),
 errorController = require("./controllers/errorController"),
-layouts = require("express-ejs-layouts");
+userController = require("./controllers/usersControllers"),
+layouts = require("express-ejs-layouts"),
+ mongoose = require("mongoose");
 
-
+mongoose.connect("mongodb://localhost:27017/Orbit_Users", {useNewUrlParser: true})
 
 app.set("port", process.env.PORT || 3000);
 
@@ -14,8 +16,7 @@ app.use(layouts);
 
 
 //default loader change to main page
-app.get("/", homeController.showSignUp)  //this is what renders first in the layout.ejs file
-//app.get("/",);
+app.get("/", homeController.showSignIn)  //this is what renders first in the layout.ejs file
 
 //pre processing requests
 app.use(express.static("public"));  //can serve static content to users
@@ -28,9 +29,29 @@ app.use(
 
 
 
-//routes
-app.use(express.json());
+//ROUTES
 
+//main
+app.use(express.json());
+app.use(express.static(__dirname + '/public'));  //so we can access the public folder
+
+
+//main routes for pages in the views ejs files
+app.get("/signup", homeController.showSignUp);
+app.post("/signup", userController.saveUser);
+app.post("signin", )
+
+app.get("/signin", homeController.showSignIn);
+//app.post("/signin", homeController.signinUser);
+
+//app.get homepage
+//app.getuserPage
+//app.post("/signup", homeController);
+
+
+//error pages go to errorControler.js for the renders
+app.use(errorController.internalServererror); //there is a server error
+app.use(errorController.pageNotFoundError); //the page is not found/exists
 
 
 
