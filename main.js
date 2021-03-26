@@ -39,15 +39,9 @@ app.use(express.static(__dirname + '/public'));  //so we can access the public f
 //main routes for pages in the views ejs files
 app.get("/signup", homeController.showSignUp);
 app.post("/signup", userController.saveUser);
-app.post("signin", )
 
 app.get("/signin", homeController.showSignIn);
-//app.post("/signin", homeController.signinUser);
-
-//app.get homepage
-//app.getuserPage
-//app.post("/signup", homeController);
-
+app.post("signin", userController.signinUser);
 
 //error pages go to errorControler.js for the renders
 app.use(errorController.internalServererror); //there is a server error

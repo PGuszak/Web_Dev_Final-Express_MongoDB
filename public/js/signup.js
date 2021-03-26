@@ -31,22 +31,15 @@ function validateForm(){
 
 
     //no special characters in any text feilds   BROKEN!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    if(firstName.value.match(notaloud) || lastName.value.match(notaloud) ||
-        User.value.match(notaloud) || Email.value.match(notaloud) ||
-        password.value.match(notaloud)){
+    if(notaloud.test(firstName.value)){
         docError.classList.remove("invisible");
-        docError.innerHTML = "Feilds cannot contain any of these special characters:   " + '<>#-{}()"`' + "'";
-        console.log(firstName.value);
-        console.log(lastName.value);
-        console.log(User.value);
-        console.log(email.value)
-        console.log(password.value);
-        console.log(Vpassword.value);
+        docError.innerHTML = "Feilds cannot contain any special characters";
+        console.log("There are special characters...NO");
         return false;
     }
 
     //if empty
-    else if(firstName.value == "" || lastName.value == "" || User.value == "" || Email == ""
+    if(firstName.value == "" || lastName.value == "" || User.value == "" || Email == ""
      || DOB.value == "" || Sec1Ans.value == "" || Sec2Ans.value == "" || Sec3Ans.value == "")
     {
         docError.classList.remove("invisible");
@@ -55,32 +48,40 @@ function validateForm(){
         return false;
     }
 
-    else if(password.value.match(lowerCaseLetters) == null)
+    if(password.value.match(lowerCaseLetters) == null)
     {
         docError.classList.remove("invisible");
         docError.innerHTML = "Password format is incorrect - Must have atleast 1 lowercase";
         return false;
     }
 
-    else if(password.value.match(upperCaseLetters) == null){
+    if(password.value.match(upperCaseLetters) == null){
         docError.classList.remove("invisible");
         docError.innerHTML = "Password format is incorrect - Must have atleast 1 Uppercase";
         return false
     }
 
-    else if(password.value.match(numbers) == null){
+    if(password.value.match(numbers) == null){
         docError.classList.remove("invisible");
         docError.innerHTML = "Password format is incorrect - Must have atleast 1 number";
         return false;
     }
 
-    else if(password.value.length <8){
+    if(password.value.length <8){
         docError.classList.remove("invisible");
         docError.innerHTML = "Password must be atleast 8 characters long";
         return false;
     }
 
-    else if(password.value == "" || Vpassword.value == ""){
+    if(password.value !== Vpassword.value){
+        password.classList.add("hasError");
+        Vpassword.classList.add("hasError");
+        docError.classList.remove("invisible");
+        docError.innerHTML = "You must have matching passwords";
+        return false;
+    }
+
+    if(password.value == "" || Vpassword.value == ""){
         password.classList.add("hasError");
         Vpassword.classList.add("hasError");
         docError.classList.remove("invisible");
@@ -88,7 +89,7 @@ function validateForm(){
         return false;
     }
 
-    else if(Sec1Question.value == "NoValid" || Sec2Question.value == "NoValid" ||
+    if(Sec1Question.value == "NoValid" || Sec2Question.value == "NoValid" ||
      Sec3Question.value == "NoValid"){
         docError.classList.remove("invisible");
         docError.innerHTML = "You have not chosen atleast 1 security question to answer"; 

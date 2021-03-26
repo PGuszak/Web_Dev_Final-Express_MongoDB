@@ -1,12 +1,6 @@
 const User = require("../models/user");
 
 exports.saveUser = (req, res) => {
-    //check to see paswords match - if not show error and highlight background
-    //check if password has
-        //small letter, capital letter, and a number
-        //if not show error message and highlight feilds
-    
-    //Initialize stuff 
     let newUser = new User({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
