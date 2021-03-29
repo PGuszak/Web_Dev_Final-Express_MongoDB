@@ -28,7 +28,8 @@ exports.saveUser = (req, res) => {
 
 
 exports.signinUser = (req, res) => {
-    let checkUser = User.findOne({ Username: req.body.username });
+    let checkUser = new User();
+    checkUser = User.findOne({ Username: req.body.username });
     console.log(checkUser);
     if (checkUser.Password == req.body.password) {
         console.log("Matches");
