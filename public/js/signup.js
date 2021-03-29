@@ -31,12 +31,12 @@ function validateForm(){
 
 
     //no special characters in any text feilds   BROKEN!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    if(notaloud.test(firstName.value)){
+    /*if(notaloud.test(firstName.value)){
         docError.classList.remove("invisible");
         docError.innerHTML = "Feilds cannot contain any special characters";
         console.log("There are special characters...NO");
         return false;
-    }
+    }*/
 
     //if empty
     if(firstName.value == "" || lastName.value == "" || User.value == "" || Email == ""

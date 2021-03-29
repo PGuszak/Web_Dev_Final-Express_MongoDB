@@ -24,13 +24,17 @@ exports.saveUser = (req, res) => {
         res.render("signin");
     })
     .catch((error) => {res.send(error)});
-};
+}
 
 
 exports.signinUser = (req, res) => {
-    //sign in here
-    //  NEED LOGIC FOR LOGIN    
-
-    //if work
-    res.render("home");
+    let checkUser = db.getUser(req.body.username);
+    console.log(checkUser)
+    /*if (checkUser.Password == req.body.password) {
+        
+    }*/
+    .then(() => {
+        res.render("home");
+    })
+    .catch((error) => {res.send(error)});
 }
