@@ -28,13 +28,10 @@ exports.saveUser = (req, res) => {
 
 
 exports.signinUser = (req, res) => {
-    let checkUser = db.getUser(req.body.username);
-    console.log(checkUser)
-    /*if (checkUser.Password == req.body.password) {
-        
-    }*/
-    .then(() => {
+    let checkUser = User.findOne({ Username: req.body.username });
+    console.log(checkUser);
+    if (checkUser.Password == req.body.password) {
+        console.log("Matches");
         res.render("home");
-    })
-    .catch((error) => {res.send(error)});
+    }
 }
