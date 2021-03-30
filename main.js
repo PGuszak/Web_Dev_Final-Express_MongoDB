@@ -1,13 +1,17 @@
 //"C:\Users\gusza\OneDrive\Desktop\College\Senoir Year\Spring 2021\Special Topics\Web_Dev_Final_Project+Exp_Node_MDB"
 //use CTRL+SHIFT+M for seeing readme preview
-const express = require("express"), app = express(),
+const express = require("express"), app = express();
 homeController = require("./controllers/homeControllers"),
-errorController = require("./controllers/errorController"),
-userController = require("./controllers/usersControllers"),
-layouts = require("express-ejs-layouts"),
- mongoose = require("mongoose");
+    errorController = require("./controllers/errorController"),
+    userController = require("./controllers/usersControllers"),
+    layouts = require("express-ejs-layouts"),
+    mongoose = require("mongoose");
 
-mongoose.connect("mongodb://localhost:27017/Orbit_Users", {useNewUrlParser: true})
+mongoose.connect("mongodb://localhost:27017/Orbit_Users", { useNewUrlParser: true });
+const db = mongoose.connection;
+db.once("open", () => {
+    console.log("Successfully connected to MongoDB using Mongoose!");
+});
 
 app.set("port", process.env.PORT || 3000);
 

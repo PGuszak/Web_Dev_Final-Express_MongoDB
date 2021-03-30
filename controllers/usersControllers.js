@@ -28,11 +28,30 @@ exports.saveUser = (req, res) => {
 
 
 exports.signinUser = (req, res) => {
-    let checkUser = new User();
-    checkUser = User.findOne({ Username: req.body.username });
-    console.log(checkUser);
-    if (checkUser.Password == req.body.password) {
-        console.log("Matches");
-        res.render("home");
+    //console.log(req.body.username);
+    
+    const db = mongoose.connection;
+    var dbo = db
+
+    var queryUsername = { Username: req.body.username, Password: req.body.password };
+    var queryPassword = { Password: req.body.password };
+
+    var queryResult; 
+
+
+    return dbo.collection("users").findOne(queryUsername)
+  .then(result => {
+    if(result) {
+      console.log(result);
+      res.render("home");
+
+    } else {
+      console.log("No document matches the provided query.");
+      res.render("signin");
     }
+    return result;
+  })
+  .catch(err => console.error(`Failed to find document: ${err}`));
+ 
+    
 }
