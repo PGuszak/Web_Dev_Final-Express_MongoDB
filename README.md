@@ -51,11 +51,12 @@ Error templating also shows a default page with a nav bar on page not found (404
 Clientside validation is done the sign up form to make sure all required fields are filled out. Those that are required are highlighted in red, page will update with an error message if a field isn't filled or is filled out improperly (i.e passwords don't match).
 
 ## EXTRA FEATURES
-  This version there are extra styles for better UI experience. On the signup page there are red highlights for better user experience.  This meaning there are red highlights to indicate which of the fields are required for sign up and to explicitly show the ones that are not required.  And the fields that are optional are in black/grey. As well as some simple touches added in to show responsiveness to the whole page. When a entry box is selected the barrier and color become more apparent when selected. As well as when the cursor from the user hover overs the user entry box the box will highlight in its specific color to show prominence.
+
+This version there are extra styles for better UI experience. On the signup page there are red highlights for better user experience.  There are red highlights to indicate which of the fields are required for sign up and to explicitly show the ones that are not required.  And the fields that are optional are in black/grey. As well as some simple touches added in to show responsiveness to the whole page. When a entry box is selected the barrier and color become more apparent when selected. As well as when the cursor from the user hover overs the user entry box the box will highlight in its specific color to show prominence.
 
 ## To Run
 
-Download the repository into a particular folder and make sure npm is installed.
+Download the repository into a particular folder and make sure npm and mongoDB is installed.
 
 From there once in the repository run the commands:
 npm install
