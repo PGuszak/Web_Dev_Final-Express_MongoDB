@@ -82,7 +82,7 @@ module.exports = {
 
   create: (req, res, next) => {
     if (req.skip) return next();
-    console.log("HELLLOOOOO")
+    console.log("HELLLOOOOO");
     let newUser = new User(getUserParams(req.body));
 
     console.log(req.body.Password);

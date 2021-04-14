@@ -83,7 +83,7 @@ app.use("/", router);
 router.get("/", homeController.showSignIn); //this is what renders first in the layout.ejs file
 
 router.get("/signup", homeController.showSignUp);
-router.post("/signup", userController.validate, userController.create, userController.redirectView);
+router.post("/signup", userController.create, userController.redirectView);
 
 
 
