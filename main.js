@@ -14,6 +14,7 @@ expressSession = require("express-session"),
 expressValidator = require("express-validator"),
 connectFlash = require("connect-flash"),
 mongoose = require("mongoose");
+User = require("./models/user");
 
 
 
@@ -29,17 +30,44 @@ db.once("open", () => {
 
 app.set("port", process.env.PORT || 3000);
 app.set("view engine", "ejs");
+
 router.use(
     express.urlencoded({ 
         extended: false,
     })
 );
 
+router.use(express.json());
+
+router.use(expressValidator());
 router.use(cookieParser("mypasscode"));
 
-
-router.use(express.json());
 app.use(express.static(__dirname + '/public'));  //so we can access the public folder
+
+router.use(expressSession({
+    secret: "my_passcode",
+    cookie: {
+        maxAge: 360000
+    },
+    resave: false,
+    saveUninitialized: false
+}));
+
+router.use(connectFlash());
+
+router.use(passport.initialize());
+router.use(passport.session());
+passport.use(User.createStrategy());
+passport.serializeUser(User.serializeUser);
+passport.deserializeUser(User.deserializeUser);
+
+router.use((req, res, next) => {
+    res.locals.flashMessages = req.flash();
+    res.locals.loggedIn = req.isAuthenticated();
+    res.locals.currentUser = req.user;
+    next();
+})
+
 
 
 
@@ -55,7 +83,9 @@ app.use("/", router);
 router.get("/", homeController.showSignIn); //this is what renders first in the layout.ejs file
 
 router.get("/signup", homeController.showSignUp);
-router.post("/signup", userController.saveUser);
+router.post("/signup", userController.validate, userController.create, userController.redirectView);
+
+
 
 router.get("/signin", homeController.showSignIn);
 router.post("/signin", userController.signinUser);
