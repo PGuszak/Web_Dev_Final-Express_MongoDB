@@ -108,15 +108,9 @@ module.exports = {
   },
 
   validate: (req, res, next) => {
-    req.sanitizeBody("Email").normalizeEmail({
-      all_lowercase: true
-    }).trim();
 
     req.check("email", "email is not valid!").isEmail();
-    req.check("zipCode", "zipCode is not valid!").notEmpty().isInt().isLength({
-      min: 5,
-      max: 5
-    });
+
     req.check("password", "Password can not be empty.").notEmpty();
 
     req.getValidationResult().then((error) => {
@@ -124,7 +118,8 @@ module.exports = {
         let messages = error.array().map(e => e.msg);
         req.flash("error", messages.join(" and "));
         req.skip = true;
-        res.local.redirect = "/signup";
+        console.log("here1");
+        res.local.redirect = "/signin";
         next();
       }
       else

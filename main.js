@@ -1,4 +1,7 @@
 //"C:\Users\gusza\OneDrive\Desktop\College\Senoir Year\Spring 2021\Special Topics\Web_Dev_Final_Project+Exp_Node_MDB"
+
+const user = require("./models/user");
+
 //use CTRL+SHIFT+M for seeing readme preview
 const express = require("express"), 
 app = express(),
