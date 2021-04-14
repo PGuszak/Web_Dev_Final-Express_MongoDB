@@ -1,6 +1,6 @@
 //"C:\Users\gusza\OneDrive\Desktop\College\Senoir Year\Spring 2021\Special Topics\Web_Dev_Final_Project+Exp_Node_MDB"
 
-const expressEjsLayouts = require("express-ejs-layouts");
+const layouts = require("express-ejs-layouts");
 
 //use CTRL+SHIFT+M for seeing readme preview
 const express = require("express"), 
@@ -11,10 +11,19 @@ errorController = require("./controllers/errorController"),
 userController = require("./controllers/usersControllers"),
 methodOverride = require("method-override"),
 layouts = require("express-ejs-layouts"),
+methodOverride = require("method-override"),
+passport = require("passport"),
+cookieParser = require("cookie-parser"),
+expressSession = require("express-session"),
+expressValidator = require("express-validator"),
+connectFlash = require("connect-flash"),
 mongoose = require("mongoose");
+
+
 
 //mongoose connection
 mongoose.connect("mongodb://localhost:27017/Orbit_Users", { useNewUrlParser: true });
+mongoose.set("userCreateIndex", true);
 const db = mongoose.connection;
 db.once("open", () => {
     console.log("Successfully connected to MongoDB using Mongoose!");
