@@ -1,6 +1,7 @@
   
-const passportLocalMongoose = require("passport-local-mongoose"),
-mongoose = require('mongoose'),
+const mongoose = require('mongoose'),
+passportLogicalMongoose = require("passport-local-mongoose"),
+
 { Schema } = require('mongoose'),
 passport = require("passport");
 
@@ -28,8 +29,8 @@ UserSchema = new Schema({
 );
 
 
-UserSchema.plugin(passportLocalMongoose, {
-    usernameField: "email"
+UserSchema.plugin(passportLogicalMongoose, {
+    usernameField: "Username"
   });
 
 module.exports = mongoose.model("User", UserSchema);

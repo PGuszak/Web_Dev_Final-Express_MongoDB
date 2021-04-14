@@ -1,5 +1,7 @@
 "use strict";
 
+const { reset } = require("nodemon");
+
 const User = require("../models/user"),
   passport = require("passport"),
   mongoose = require("mongoose"),
@@ -83,7 +85,9 @@ module.exports = {
   create: (req, res, next) => {
     if (req.skip) return next();
     console.log("HELLLOOOOO");
-    let newUser = new User(getUserParams(req.body));
+    let userParams = getUserParams(req.body);
+
+    let newUser = new User(userParams);
 
     console.log(req.body.Password);
 
@@ -96,11 +100,11 @@ module.exports = {
       }
       else {
         console.log("NOOOO")
-        //req.flash("error", `Failed to create user account: ${error.message}`);
+        req.flash("error", `Failed to create user account: ${error.message}`);
         res.locals.redirect = "/signup";
         next();
       }
-    })
+    });
   },
 
   validate: (req, res, next) => {
