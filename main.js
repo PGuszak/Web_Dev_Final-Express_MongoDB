@@ -31,6 +31,7 @@ db.once("open", () => {
 
 
 
+
 app.set("port", process.env.PORT || 3000);
 app.set("view engine", "ejs");
 
@@ -93,10 +94,6 @@ router.post("/signup", userController.create, userController.redirectView);
 router.get("/signin", homeController.showSignIn);
 router.post("/signin", userController.signinUser, userController.redirectView);
 router.get("/home/:id", userController.showHome, userController.showViewHome);
-
-
-
-
 
 
 router.get("/users/userPage", userController.showUserPage, userController.showViewUserPage);

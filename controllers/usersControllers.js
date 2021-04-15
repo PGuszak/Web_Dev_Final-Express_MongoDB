@@ -138,8 +138,8 @@ module.exports = {
         
         if (result) {
           //console.log(result); //prints signed in user
-          res.locals.redirect = `/home/${result._id}`;;
-          res.locals.user = result;
+          res.locals.redirect = `/home/${result._id}`;
+          res.locals.currentUser = result;
           next();
 
         } else {
@@ -155,7 +155,7 @@ module.exports = {
     let userId = req.params.id;
     User.findById(userId)
         .then(user => {
-            res.locals.user = user;
+            res.locals.currentUser = user;
             next();
         })
         .catch(error => {
@@ -170,7 +170,7 @@ showProjects: (req, res, next) => {
   let userId = req.params.id;
   User.findById(userId)
       .then(user => {
-          res.locals.user = user;
+          res.locals.currentUser = user;
           next();
       })
       .catch(error => {
@@ -185,7 +185,7 @@ showFriends: (req, res, next) => {
   let userId = req.params.id;
   User.findById(userId)
       .then(user => {
-          res.locals.user = user;
+          res.locals.currentUser = user;
           next();
       })
       .catch(error => {
@@ -203,7 +203,7 @@ showHome: (req, res, next) => {
   let userId = req.params.id;
   User.findById(userId)
       .then(user => {
-          res.locals.user = user;
+          res.locals.currentUser = user;
           next();
       })
       .catch(error => {
@@ -221,7 +221,7 @@ showUserPage: (req, res, next) => {
   console.log(userId)
   User.findById(userId)
       .then(user => {
-          res.locals.user = user;
+          res.locals.currentUser = user;
           console.log(user);
           next();
       })
