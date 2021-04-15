@@ -43,7 +43,7 @@ router.use(
 router.use(express.json());
 
 router.use(expressValidator());
-router.use(cookieParser("mypasscode"));
+router.use(cookieParser("my_passcode"));
 
 app.use(express.static(__dirname + '/public'));  //so we can access the public folder
 
@@ -77,8 +77,8 @@ router.use((req, res, next) => {
 //preprosessing 
 router.use(express.static("public"));  //can serve static content to users
 router.use(layouts);
-app.use(methodOverride("_method", {methods: ["POST", "GET", "PUT"]}));
-app.use("/", router);
+app.use(methodOverride("_method", {methods: ["POST", "GET"]}));
+
 
 
 
@@ -88,15 +88,19 @@ router.get("/", homeController.showSignIn); //this is what renders first in the 
 router.get("/signup", homeController.showSignUp);
 router.post("/signup", userController.create, userController.redirectView);
 
-
-
 router.get("/signin", homeController.showSignIn);
 router.post("/signin", userController.signinUser);
+
+router.get("/user/edit", userController.edit);
+
+
+
 
 //error pages go to errorControler.js for the renders
 router.use(errorController.internalServererror); //there is a server error
 router.use(errorController.pageNotFoundError); //the page is not found/exists
 
+app.use("/", router);
 
 
 app.listen(app.get("port"), () => {

@@ -29,10 +29,6 @@ getUserParams = body => {
 };
 
 module.exports = {
-
-  login: (req, res) => {
-    res.render("/signup");
-  },
   index: (req, res, next) => {
     User.find()
       .then(users => {
@@ -51,7 +47,15 @@ module.exports = {
     res.render("users/new");
   },
   edit: (req, res) => {
-    //edit page needs to be built
+    let userId = req.params.id;
+        User.findById(userId)
+            .then(user => {
+                res.render("users/edit", { user: user });
+            })
+            .catch(error => {
+                console.log(`Error fetching user by ID: ${error.message}`);
+                next(error);
+            })
   },
   /*
   saveUser: (req, res) => {
@@ -84,22 +88,20 @@ module.exports = {
 
   create: (req, res, next) => {
     if (req.skip) return next();
-    console.log("HELLLOOOOO");
     let userParams = getUserParams(req.body);
 
     let newUser = new User(userParams);
 
-    console.log(req.body.Password);
 
+    //.register does not work
     User.register(newUser, req.body.Password, (error, user) => {
       if (user) {
-        console.log("YESS")
         req.flash("success", 'User Account Successfully Created!');
+        newUser.save();
         res.locals.redirect = "/signin";
         next();
       }
       else {
-        console.log("NOOOO")
         req.flash("error", `Failed to create user account: ${error.message}`);
         res.locals.redirect = "/signup";
         next();
@@ -107,6 +109,7 @@ module.exports = {
     });
   },
 
+  //  FIX THIS SHIT 
   validate: (req, res, next) => {
 
     req.check("email", "email is not valid!").isEmail();
@@ -119,7 +122,7 @@ module.exports = {
         req.flash("error", messages.join(" and "));
         req.skip = true;
         console.log("here1");
-        res.local.redirect = "/signin";
+        res.local.redirect = "/homepage";
         next();
       }
       else

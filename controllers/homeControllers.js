@@ -1,16 +1,19 @@
-//made templates for routes when clicked
-exports.showSignUp = (req, res) => {
-    res.render("signup");
-}
+"use strict";
 
-exports.showSignIn = (req, res) => {
-    res.render("signin"); 
-}
+module.exports = {
+    showSignIn: (req, res) => {
+        res.render("signin");
+    },
+    showHomepage: (req, res) => {
+        res.render("home.ejs");
+    },
+    showSignUp: (req, res) => {
+        res.render("signup");
+    },
+    redirectView: (req, res, rext) => {
+        let redirectPath = res.locals.redirect;
+        if (redirectPath != undefined) res.redirect(redirectPath);
+        else next();
+    }
 
-exports.showHomePage = (req, res) => {
-    res.render("homepage");
-}
-
-exports.userPage = (req, res) => {
-    res.render("userPage"); //loads the ejs file with this name
 }
