@@ -66,10 +66,10 @@ From there the website will be running on localhost at port 3000.
 
 ## Current Responsibilities
 
-Cesar Ramirez - Logo and Overall Design, User Page (accompanying JS and CSS), Sign in (Routing and Templating).
+Cesar Ramirez - Logo and Overall Design, User Page (accompanying JS and CSS), Sign in (Routing and Templating) VueJS
 
 Paul Guszak - Sign Up (accompanying JS and CSS), Sign in (accompanying JS and CSS), Homepage, Sign Up (Routing and Templating), MongoDB
 
-Gabriel Jones - Documentation and Report, Seeding, Error Templating
+Gabriel Jones - Documentation and Report, VueJS, Seeding, Error Templating
 ## Credits
 @CeRaTech (2021 - )
