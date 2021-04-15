@@ -54,6 +54,29 @@ Clientside validation is done the sign up form to make sure all required fields 
 
 This version there are extra styles for better UI experience. On the signup page there are red highlights for better user experience.  There are red highlights to indicate which of the fields are required for sign up and to explicitly show the ones that are not required.  And the fields that are optional are in black/grey. As well as some simple touches added in to show responsiveness to the whole page. When a entry box is selected the barrier and color become more apparent when selected. As well as when the cursor from the user hover overs the user entry box the box will highlight in its specific color to show prominence.
 
+## User Model Decisions
+
+Our current version of the user model looks like this:
+
+        firstName: String,
+        lastName: String,
+        Gender: String,
+        City_State: String,
+        Username: String,
+        Email: String,
+        Password: String,
+        VPassword: String,
+        DOB: Date,
+        Bio: String,
+        SecurityQ1: String,
+        SecurityA1: String,
+        SecurityQ2: String,
+        SecurityA2: String,
+        SecurityQ3: String,
+        SecurityA3: String
+        
+With an additional timestamp variable to record when the record is placed into the database. We were overall unsure of what was meant by the requirement of improving/refactoring this user model so we have left it largely as is per the advice of the aid. One possible thought currently would be to assign posts (another schema) as a list to a particular user. It may make more sense to do so the other way around however, this is largely a preference in design.
+
 ## To Run
 
 Download the repository into a particular folder and make sure npm and mongoDB is installed.
