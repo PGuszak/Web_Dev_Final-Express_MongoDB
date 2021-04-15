@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
 
-    <head>
-
-        <title>Orbit User Profile</title>
-
-        
-    </head>
-
-    <!-- body -->
-
-    <body>
 
         <header>
             <!-- bootstrap -->
@@ -26,53 +14,15 @@
 
 
     <!-- css -->
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="/css/styles.css">
 
-    <!-- Nav Bar -->
-    <nav class="navbar navbar-expand-md navbar-custom">
-
-
-        <div class="d-flex justify-content-start">
-            <div>
-                <img src="images/OrbitLogo.png" width="45" height="45" class="d-inline-block align-top" alt="">
-            </div>
-        </div>
-
-
-        <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-
-                <li class="nav-item nav active">
-                    <a class="nav-link navbar-text" href="#">Home</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link navbar-text" href="#">Discussions</a>
-                </li>
-
-
-            </ul>
-
-
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
-            </form>
-
-        </div>
-    </nav>
+    
         </header>
-
-        <div class="container-fluid border-dark rounded userProfileHeader">
+        <div class="row d-flex mainDiv">
+        <div class="container-fluid border-dark rounded userProfileHeader border">
 
             <div class="row justify-content-center pt-4 pb-3">
-                <img src="images/Ramirez_Cesar_PFP.jpg" width="280" height="280"
+                <img src="/images/Ramirez_Cesar_PFP.jpg" width="280" height="280"
                     class="d-inline-block align-top rounded-circle border profilePictureBorder" alt="">
             </div>
 
@@ -176,6 +126,7 @@
                 </div>
             </div>
 
+            <br>
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-center  whiteText">
                     Relationship Status:
@@ -185,7 +136,7 @@
                     Single
                 </div>
             </div>
-
+            <br>
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-center   whiteText">
                     Lives in:
@@ -200,56 +151,54 @@
         </div>
 
 
+
+
         <!-- User Info Row 2 -->
         <div class="container-fluid userInfoRowsSingle">
 
+            <!-- Overview -->
             <div class="col rounded ">
-                <div class="titleText text-center border-bottom">
+                <div class=" titleText text-center border-bottom">
                     Work and Education
                 </div>
             </div>
 
-            <div class="">
-
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-center">
-
-                        
-                            <div>
-                            <img src="images/CU_Denver.jpg" width="45" height="45" class="d-inline-block align-top"
-                                alt="">
-                            </div>
-                        
-                    </div>
-
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-6 align-self-center whiteText">
-                        University Of Colorado Denver
-                    </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-center whiteText">
+                    Highschool:
                 </div>
 
+                <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-center   whiteText">
+                    Highlands Ranch Highschool
+                </div>
+            </div>
+
+            <br>
+
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-center  whiteText">
+                    University:
+                </div>
+
+                <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-center  whiteText">
+                    University of Colorado Denver
+                </div>
+            </div>
+
+            <br>
+
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-center   whiteText">
+                    Works:
+                </div>
+
+                <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-center   whiteText">
+                    SLAC-LAB
+                </div>
             </div>
 
 
-            <div class="">
-
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-center">
-
-
-                        <div>
-                            <img src="images/SLAC.jpeg" width="45" height="45" class="d-inline-block align-top"
-                                alt="">
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-6 align-self-center whiteText">
-                        SLAC LAB
-                    </div>
-                </div>
-
-            </div>
         </div>
-
 
         <!-- User Info Row 2 -->
         <div class="container-fluid userInfoRowsSingle">
@@ -260,20 +209,4 @@
             </div>
         </div>
 
-
-        <footer class="footer">
-            Copyright - CeRaTech, Subscorpion:  More Information 
-            <span>
-                <input style="background-color: #23272A; color:White; border-color: #23272A; box-shadow: 0px 0px 10px 0px #23272A;"
-                type="button" value="here"> <!--link to an information page-->
-            </span>
-        </footer>
-
-
-
-    </body>
-
-
-    
-
-</html>
+    </div>

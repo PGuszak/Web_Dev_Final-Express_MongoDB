@@ -57,33 +57,6 @@ module.exports = {
                 next(error);
             })
   },
-  /*
-  saveUser: (req, res) => {
-    let newUser = new User({
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      Gender: req.body.Gender,
-      City_State: req.body.City_State,
-      Username: req.body.Username,
-      Email: req.body.Email,
-      Password: req.body.Password,
-      Vpassword: req.body.Vpassword,
-      DOB: req.body.DOB,
-      Bio: req.body.Bio,
-      SecurityQ1: req.body.SecurityQ1,
-      SecurityA1: req.body.SecurityA1,
-      SecurityQ2: req.body.SecurityQ2,
-      SecurityA2: req.body.SecurityA2,
-      SecurityQ3: req.body.SecurityQ3,
-      SecurityA3: req.body.SecurityA3
-    });
-    newUser.save()
-      .then(() => {
-        res.render("signin");
-      })
-      .catch((error) => { res.send(error) });
-  },
-*/
 
 
   create: (req, res, next) => {
@@ -109,7 +82,6 @@ module.exports = {
     });
   },
 
-  //  FIX THIS SHIT 
   validate: (req, res, next) => {
 
     req.check("email", "email is not valid!").isEmail();
@@ -149,10 +121,7 @@ module.exports = {
     if (redirectPath != undefined) res.redirect(redirectPath);
     else next();
 },
-
-
-
-  signinUser: (req, res) => {
+  signinUser: (req, res, next) => {
     //console.log(req.body.username);
 
     const db = mongoose.connection;
@@ -164,18 +133,103 @@ module.exports = {
     var queryResult;
 
 
-    return dbo.collection("users").findOne(queryUsername)
+      dbo.collection("users").findOne(queryUsername)
       .then(result => {
+        
         if (result) {
           //console.log(result); //prints signed in user
-          res.render("home");
+          res.locals.redirect = `/home/${result._id}`;;
+          res.locals.user = result;
+          next();
 
         } else {
           console.log("No document matches the provided query.");
           res.render("signin");
+          next();
         }
-        return result;
       })
       .catch(err => console.error(`Failed to find document: ${err}`));
-  }
+  },
+
+  showPosts: (req, res, next) => {
+    let userId = req.params.id;
+    User.findById(userId)
+        .then(user => {
+            res.locals.user = user;
+            next();
+        })
+        .catch(error => {
+            console.log(`Error fetching user by ID: ${error.message}`);
+        })
+},
+showViewPosts: (req, res) => {
+  res.render("users/myPosts");
+},
+
+showProjects: (req, res, next) => {
+  let userId = req.params.id;
+  User.findById(userId)
+      .then(user => {
+          res.locals.user = user;
+          next();
+      })
+      .catch(error => {
+          console.log(`Error fetching user by ID: ${error.message}`);
+      })
+},
+showViewProjects: (req, res) => {
+res.render("users/myProjects");
+},
+
+showFriends: (req, res, next) => {
+  let userId = req.params.id;
+  User.findById(userId)
+      .then(user => {
+          res.locals.user = user;
+          next();
+      })
+      .catch(error => {
+          console.log(`Error fetching user by ID: ${error.message}`);
+      })
+},
+showViewFriends: (req, res) => {
+res.render("users/myFriends");
+},
+
+
+
+
+showHome: (req, res, next) => {
+  let userId = req.params.id;
+  User.findById(userId)
+      .then(user => {
+          res.locals.user = user;
+          next();
+      })
+      .catch(error => {
+          console.log(`Error fetching user by ID: ${error.message}`);
+      })
+},
+showViewHome: (req, res) => {
+res.render("users/home");
+},
+
+
+showUserPage: (req, res, next) => {
+  let userId = req.params.id;
+  console.log(req.params.id);
+  console.log(userId)
+  User.findById(userId)
+      .then(user => {
+          res.locals.user = user;
+          console.log(user);
+          next();
+      })
+      .catch(error => {
+          console.log(`Error fetching user by ID: ${error.message}`);
+      })
+},
+showViewUserPage: (req, res) => {
+res.render("users/userPage");
+},
 }

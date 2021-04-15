@@ -34,6 +34,8 @@ db.once("open", () => {
 app.set("port", process.env.PORT || 3000);
 app.set("view engine", "ejs");
 
+app.use(methodOverride("_method", {methods: ["POST", "GET"]}));
+
 router.use(
     express.urlencoded({ 
         extended: false,
@@ -77,7 +79,7 @@ router.use((req, res, next) => {
 //preprosessing 
 router.use(express.static("public"));  //can serve static content to users
 router.use(layouts);
-app.use(methodOverride("_method", {methods: ["POST", "GET"]}));
+
 
 
 
@@ -89,9 +91,21 @@ router.get("/signup", homeController.showSignUp);
 router.post("/signup", userController.create, userController.redirectView);
 
 router.get("/signin", homeController.showSignIn);
-router.post("/signin", userController.signinUser);
+router.post("/signin", userController.signinUser, userController.redirectView);
+router.get("/home/:id", userController.showHome, userController.showViewHome);
 
-router.get("/user/edit", userController.edit);
+
+
+
+
+
+router.get("/users/userPage", userController.showUserPage, userController.showViewUserPage);
+
+router.get("/users/posts", userController.showPosts, userController.showViewPosts);
+router.get("/users/projects", userController.showProjects, userController.showViewProjects);
+router.get("/users/friends", userController.showFriends, userController.showViewFriends);
+
+//router.get("/user/edit", userController.edit);
 
 
 
