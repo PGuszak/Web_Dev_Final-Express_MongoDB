@@ -1,5 +1,6 @@
 //"C:\Users\gusza\OneDrive\Desktop\College\Senoir Year\Spring 2021\Special Topics\Web_Dev_Final_Project+Exp_Node_MDB"
 
+const { MongoTimeoutError } = require("mongodb");
 const user = require("./models/user");
 
 //use CTRL+SHIFT+M for seeing readme preview
@@ -64,8 +65,8 @@ router.use(connectFlash());
 router.use(passport.initialize());
 router.use(passport.session());
 passport.use(User.createStrategy());
-passport.serializeUser(User.serializeUser);
-passport.deserializeUser(User.deserializeUser);
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 router.use((req, res, next) => {
     res.locals.flashMessages = req.flash();
@@ -93,13 +94,19 @@ router.post("/signup", userController.create, userController.redirectView);
 
 router.get("/signin", homeController.showSignIn);
 router.post("/signin", userController.signinUser, userController.redirectView);
-router.get("/home/:id", userController.showHome, userController.showViewHome);
+router.get("/signin", userController.authenticate); // doesn't work
 
+router.get("/logout", userController.logout, userController.redirectView);
+
+router.get("/home/:id", userController.showHome, userController.showViewHome);
 
 router.get("/users/userPage", userController.showUserPage, userController.showViewUserPage);
 
 router.get("/users/posts", userController.showPosts, userController.showViewPosts);
+//router.get("/users/posts/:id", userController.showPosts, userController.showViewPosts);
+
 router.get("/users/projects", userController.showProjects, userController.showViewProjects);
+
 router.get("/users/friends", userController.showFriends, userController.showViewFriends);
 
 //router.get("/user/edit", userController.edit);

@@ -5,12 +5,6 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-
-
-        
-       
-
-
         
         crossorigin="anonymous"></script>
 
@@ -18,10 +12,6 @@
     <script src="https://kit.fontawesome.com/e3c832e492.js" crossorigin="anonymous"></script>
     <!-- css -->
     <link rel="stylesheet" href="/css/homepage.css">
-    
-
-
-    
     
         </header>
         
@@ -82,7 +72,7 @@
 
                             
                             <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-center">
-                                <a class="" href="/users/posts"> 
+                                <a class="" href="/users/posts/${currentUser._id}"> 
                                 <i class="fas fa-keyboard fa-3x "></i>
                                 </a>
                             </div>
@@ -107,6 +97,22 @@
                             <div class="col-lg-6 col-md-6 col-sm-6 col-6 align-self-center">
                                 <a class="" href="/users/friends" style="color: black"> 
                                 My Friends
+                                </a>
+                            </div>
+
+                        </div>
+
+                        <div class="row mt-5 border">
+
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-center">
+                                <a class="" href="/logout"> 
+                                <i class="fas fa-user-friends fa-3x "></i>
+                                </a>
+                            </div>
+                            
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-6 align-self-center">
+                                <a class="" href="/logout" style="color: blue"> 
+                                Logout
                                 </a>
                             </div>
 

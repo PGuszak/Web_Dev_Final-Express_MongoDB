@@ -11,7 +11,7 @@ UserSchema = new Schema(
         lastName: String,
         Gender: String,
         City_State: String,
-        Username: String,
+        Username: {type: String, unique: true},
         Email: String,
         Password: String,
         VPassword: String,

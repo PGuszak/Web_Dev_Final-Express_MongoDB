@@ -105,7 +105,7 @@ module.exports = {
   authenticate: passport.authenticate("local", {
     failureRedirect: "/signin",
     failureFlash: "Failed to login.",
-    successRedirect: "/",
+    successRedirect: "/users/home",
     successFlash: "Logged in!"
   }),
 
@@ -152,9 +152,15 @@ module.exports = {
   },
 
   showPosts: (req, res, next) => {
+    const db = mongoose.connection;
+    var dbo = db
+
+    var queryUsername = { Username: req.body.username, Password: req.body.password };
+
     let userId = req.params.id;
     User.findById(userId)
         .then(user => {
+            res.locals.redirect
             res.locals.currentUser = user;
             next();
         })
