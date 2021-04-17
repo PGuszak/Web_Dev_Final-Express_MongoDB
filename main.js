@@ -4,20 +4,20 @@ const { MongoTimeoutError } = require("mongodb");
 const user = require("./models/user");
 
 //use CTRL+SHIFT+M for seeing readme preview
-const express = require("express"), 
-app = express(),
-router = express.Router(),
-homeController = require("./controllers/homeControllers"),
-errorController = require("./controllers/errorController"),
-userController = require("./controllers/usersControllers"),
-layouts = require("express-ejs-layouts"),
-methodOverride = require("method-override"),
-passport = require("passport"),
-cookieParser = require("cookie-parser"),
-expressSession = require("express-session"),
-expressValidator = require("express-validator"),
-connectFlash = require("connect-flash"),
-mongoose = require("mongoose");
+const express = require("express"),
+    app = express(),
+    router = express.Router(),
+    homeController = require("./controllers/homeControllers"),
+    errorController = require("./controllers/errorController"),
+    userController = require("./controllers/usersControllers"),
+    layouts = require("express-ejs-layouts"),
+    methodOverride = require("method-override"),
+    passport = require("passport"),
+    cookieParser = require("cookie-parser"),
+    expressSession = require("express-session"),
+    expressValidator = require("express-validator"),
+    connectFlash = require("connect-flash"),
+    mongoose = require("mongoose");
 User = require("./models/user");
 
 
@@ -31,21 +31,18 @@ db.once("open", () => {
 });
 
 
-
-
 app.set("port", process.env.PORT || 3000);
 app.set("view engine", "ejs");
 
-app.use(methodOverride("_method", {methods: ["POST", "GET"]}));
+app.use(methodOverride("_method", { methods: ["POST", "GET"] }));
 
 router.use(
-    express.urlencoded({ 
+    express.urlencoded({
         extended: false,
     })
 );
 
 router.use(express.json());
-
 router.use(expressValidator());
 router.use(cookieParser("my_passcode"));
 
@@ -73,6 +70,7 @@ router.use((req, res, next) => {
     res.locals.loggedIn = req.isAuthenticated();
     res.locals.currentUser = req.user;
     next();
+
 })
 
 
@@ -88,26 +86,42 @@ router.use(layouts);
 
 //normal routes
 router.get("/", homeController.showSignIn); //this is what renders first in the layout.ejs file
-
 router.get("/signup", homeController.showSignUp);
 router.post("/signup", userController.create, userController.redirectView);
 
+
+
+
+//Login
 router.get("/signin", homeController.showSignIn);
 router.post("/signin", userController.signinUser, userController.redirectView);
 router.get("/signin", userController.authenticate); // doesn't work
 
+
+
+
+//LogOut
 router.get("/logout", userController.logout, userController.redirectView);
 
+
+//HOME
 router.get("/home/:id", userController.showHome, userController.showViewHome);
 
-router.get("/users/userPage", userController.showUserPage, userController.showViewUserPage);
 
-router.get("/users/posts", userController.showPosts, userController.showViewPosts);
-//router.get("/users/posts/:id", userController.showPosts, userController.showViewPosts);
+//userPage
+router.get("/users/:id/userPage", userController.showUserPage, userController.showViewUserPage);
 
-router.get("/users/projects", userController.showProjects, userController.showViewProjects);
 
-router.get("/users/friends", userController.showFriends, userController.showViewFriends);
+//userPosts
+router.get("/users/:id/posts", userController.showPosts, userController.showViewPosts);
+
+
+//userProjects
+router.get("/users/:id/projects", userController.showProjects, userController.showViewProjects);
+
+
+//userFriends
+router.get("/users/:id/friends", userController.showFriends, userController.showViewFriends);
 
 //router.get("/user/edit", userController.edit);
 
@@ -118,9 +132,10 @@ router.get("/users/friends", userController.showFriends, userController.showView
 router.use(errorController.internalServererror); //there is a server error
 router.use(errorController.pageNotFoundError); //the page is not found/exists
 
+
+
+
 app.use("/", router);
-
-
 app.listen(app.get("port"), () => {
     console.log(`Server is running on port ${app.get("port")}`);
 
