@@ -6,13 +6,12 @@ passport = require("passport");
 
 UserPostsSchema = new Schema(
     {
-        caption: {type: mongoose.Types.String, required: true}, 
-        postPicture: {type: mongoose.Types.String, required: true},
-        userName: {type: mongoose.Types.String, required: true},
-        comments: {type: mongoose.Types.String},
-        likes: {type: mongoose.Types.Number}
-
-        
+        userID: {type: String, required: true},
+        caption: {type: String}, 
+        postPicture: {type: String},
+        userName: {type: String},
+        comments: {type: String},
+        likes: {type: Number}        
     },
     {
         timestamps: true

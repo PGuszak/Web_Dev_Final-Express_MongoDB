@@ -53,7 +53,7 @@
 
                 <!-- Projects -->
                 <!-- start -->
-                <div class="row mt-5 border">
+                <div class="row mt-4 border">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-center">
                         <a class="" href="<%= `/users/${currentUser.id}/projects` %> ">
                             <i class="fas fa-folder-open fa-3x "></i>
@@ -72,7 +72,7 @@
 
                 <!-- Posts -->
                 <!-- start -->
-                <div class="row mt-5 border">
+                <div class="row mt-4 border">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-center">
                         <a class="" href="<%= `/users/${currentUser.id}/posts` %> ">
                             <i class="fas fa-keyboard fa-3x "></i>
@@ -91,7 +91,7 @@
 
                 <!-- Friends -->
                 <!-- start -->
-                <div class="row mt-5 border">
+                <div class="row mt-4 border">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-center">
                         <a class="" href="<%= `/users/${currentUser.id}/friends` %> ">
                             <i class="fas fa-user-friends fa-3x "></i>
@@ -110,7 +110,7 @@
 
                 <!-- logout -->
                 <!-- start -->
-                <div class="row mt-5 border">
+                <div class="row mt-4 border">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-center">
                         <a class="" href="/logout">
                             <i class="fas fa-user-friends fa-3x "></i>
@@ -133,26 +133,26 @@
 
 
 
-    <div class="middleColGeneral col-lg-8 col-md-12 col-sm-12 col-12">
-
-        <div class="container-fluid d-flex justify-content-center">
-            <div class="card cardUserPost">
-
-                <div class="card-header text-center">
-                    Create Post
-                </div>
-                <div class="card-body">
-                    <textarea class="form-control" id="message" rows="1"
-                        placeholder="What are you thinking?"></textarea>
-                    <form class="mt-2 mb-2" action="/action_page.php">
-                        <input type="file" id="myFile" name="filename">
-                    </form>
-                    <hr class="hrLineCreatePost">
-                    <a href="#" class="btn btn-primary btn-block shareButton">Share</a>
-                </div>
+  
+        <div class="middleColGeneral col-lg-8 col-md-12 col-sm-12 col-12">
+            <div class="container-fluid d-flex justify-content-center">                
+                    <div class="card cardUserPost">
+                        <div class="card-header text-center">
+                            Create Post
+                        </div><!-- help here!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+                        <div class="card-body">
+                            <textarea class="form-control" id="message" name = "caption" rows="1"
+                                placeholder="What are you thinking?"></textarea>
+                            <form class="mt-2 mb-2" method="POST" action="<%= `/users/${currentUser.id}/post` %> ">
+                                <input type="file" id="myFile" name="filename">
+                            </form>
+                            <hr class="hrLineCreatePost">
+                            <a href="<%= `/home/${currentUser.id}` %>" class="btn btn-primary btn-block shareButton">Share</a>
+                        </div>
+                    </div>
+                </form>
             </div>
 
-        </div>
 
 
         <div class="container-fluid d-flex justify-content-center">

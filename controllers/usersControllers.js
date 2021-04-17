@@ -140,8 +140,8 @@ module.exports = {
           //console.log(result); //prints signed in user
           res.locals.redirect = `/home/${result._id}`;
           res.locals.currentUser = result;
-          console.log("User ID:");
-          console.log(res.locals.currentUser._id);
+          //console.log("User ID:");
+          //console.log(res.locals.currentUser._id);
           next();
 
         } else {
@@ -202,12 +202,12 @@ res.render("users/home");
 //------------------ start ------------------
 showUserPage: (req, res, next) => {
   let userId = req.params.id;
-  console.log(req.params.id);
-  console.log(userId)
+  //console.log(req.params.id);
+  //console.log(userId)
   User.findById(userId)
       .then(user => {
           res.locals.currentUser = user;
-          console.log(user);
+          //console.log(user);
           next();
       })
       .catch(error => {

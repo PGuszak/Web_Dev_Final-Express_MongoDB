@@ -10,9 +10,10 @@ const express = require("express"),
     homeController = require("./controllers/homeControllers"),
     errorController = require("./controllers/errorController"),
     userController = require("./controllers/usersControllers"),
+    userPostController = require("./controllers/userPostsController"),
+    passport = require("passport"),
     layouts = require("express-ejs-layouts"),
     methodOverride = require("method-override"),
-    passport = require("passport"),
     cookieParser = require("cookie-parser"),
     expressSession = require("express-session"),
     expressValidator = require("express-validator"),
@@ -23,7 +24,7 @@ User = require("./models/user");
 
 
 //mongoose connection
-mongoose.connect("mongodb://localhost:27017/Orbit_Users", { useNewUrlParser: true });
+mongoose.connect("mongodb://localhost:27017/Orbit_App", { useNewUrlParser: true });
 mongoose.set("useCreateIndex", true);
 const db = mongoose.connection;
 db.once("open", () => {
@@ -93,9 +94,9 @@ router.post("/signup", userController.create, userController.redirectView);
 
 
 //Login
-router.get("/signin", homeController.showSignIn);
+router.get("/signin", homeController.showSignIn)
+//router.get("/signin", userController.authenticate); // doesn't work
 router.post("/signin", userController.signinUser, userController.redirectView);
-router.get("/signin", userController.authenticate); // doesn't work
 
 
 
@@ -122,6 +123,10 @@ router.get("/users/:id/projects", userController.showProjects, userController.sh
 
 //userFriends
 router.get("/users/:id/friends", userController.showFriends, userController.showViewFriends);
+
+
+//makepost DOESN'T WORK RN
+router.post("/user/:id/post", userPostController.makePost, userPostController.redirectView);
 
 //router.get("/user/edit", userController.edit);
 
