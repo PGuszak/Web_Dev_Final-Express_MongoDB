@@ -8,26 +8,26 @@ const User = require("../models/user"),
   mongoose = require("mongoose"),
 
 
-getUserParams = body => {
-  return {
-    firstName: body.firstName,
-    lastName: body.lastName,
-    Gender: body.Gender,
-    City_State: body.City_State,
-    Username: body.Username,
-    Email: body.Email,
-    Password: body.Password,
-    Vpassword: body.Vpassword,
-    DOB: body.DOB,
-    Bio: body.Bio,
-    SecurityQ1: body.SecurityQ1,
-    SecurityA1: body.SecurityA1,
-    SecurityQ2: body.SecurityQ2,
-    SecurityA2: body.SecurityA2,
-    SecurityQ3: body.SecurityQ3,
-    SecurityA3: body.SecurityA3
+  getUserParams = body => {
+    return {
+      firstName: body.firstName,
+      lastName: body.lastName,
+      Gender: body.Gender,
+      City_State: body.City_State,
+      Username: body.Username,
+      Email: body.Email,
+      Password: body.Password,
+      Vpassword: body.Vpassword,
+      DOB: body.DOB,
+      Bio: body.Bio,
+      SecurityQ1: body.SecurityQ1,
+      SecurityA1: body.SecurityA1,
+      SecurityQ2: body.SecurityQ2,
+      SecurityA2: body.SecurityA2,
+      SecurityQ3: body.SecurityQ3,
+      SecurityA3: body.SecurityA3
+    };
   };
-};
 
 module.exports = {
   index: (req, res, next) => {
@@ -49,14 +49,14 @@ module.exports = {
   },
   edit: (req, res) => {
     let userId = req.params.id;
-        User.findById(userId)
-            .then(user => {
-                res.render("users/edit", { user: user });
-            })
-            .catch(error => {
-                console.log(`Error fetching user by ID: ${error.message}`);
-                next(error);
-            })
+    User.findById(userId)
+      .then(user => {
+        res.render("users/edit", { user: user });
+      })
+      .catch(error => {
+        console.log(`Error fetching user by ID: ${error.message}`);
+        next(error);
+      })
   },
 
 
@@ -121,7 +121,7 @@ module.exports = {
     let redirectPath = res.locals.redirect;
     if (redirectPath != undefined) res.redirect(redirectPath);
     else next();
-},
+  },
   signinUser: (req, res, next) => {
     //console.log(req.body.username);
 
@@ -134,9 +134,9 @@ module.exports = {
     var queryResult;
 
 
-      dbo.collection("users").findOne(queryUsername)
+    dbo.collection("users").findOne(queryUsername)
       .then(result => {
-        
+
         if (result) {
           //console.log(result); //prints signed in user
           res.locals.redirect = `/home/${result._id}`;
@@ -157,123 +157,122 @@ module.exports = {
 
 
 
-//User Friends Methods
-//------------------ start ------------------
-showFriends: (req, res, next) => {
-  let userId = req.params.id;
-  User.findById(userId)
+  //User Friends Methods
+  //------------------ start ------------------
+  showFriends: (req, res, next) => {
+    let userId = req.params.id;
+    User.findById(userId)
       .then(user => {
-          res.locals.currentUser = user;
-          next();
+        res.locals.currentUser = user;
+        next();
       })
       .catch(error => {
-          console.log(`Error fetching user by ID: ${error.message}`);
+        console.log(`Error fetching user by ID: ${error.message}`);
       })
-},
-showViewFriends: (req, res) => {
-res.render("users/myFriends");
-},
-//------------------ end ------------------
+  },
+  showViewFriends: (req, res) => {
+    res.render("users/myFriends");
+  },
+  //------------------ end ------------------
 
 
 
 
-//User Home Methods
-//------------------ start ------------------
-showHome: (req, res, next) => {
-  let userId = req.params.id;
-  User.findById(userId)
+  //User Home Methods
+  //------------------ start ------------------
+  showHome: (req, res, next) => {
+    let userId = req.params.id;
+    User.findById(userId)
       .then(user => {
-          res.locals.currentUser = user;
-          next();
+        res.locals.currentUser = user;
+        next();
       })
       .catch(error => {
-          console.log(`Error fetching user by ID: ${error.message}`);
+        console.log(`Error fetching user by ID: ${error.message}`);
       })
-},
-showViewHome: (req, res) => {
-res.render("users/home");
-},
-//------------------ end ------------------
+  },
+  showViewHome: (req, res) => {
+    res.render("users/home");
+  },
+  //------------------ end ------------------
 
 
 
 
-//User Page Methods
-//------------------ start ------------------
-showUserPage: (req, res, next) => {
-  let userId = req.params.id;
-  //console.log(req.params.id);
-  //console.log(userId)
-  User.findById(userId)
+  //User Page Methods
+  //------------------ start ------------------
+  showUserPage: (req, res, next) => {
+    let userId = req.params.id;
+    //console.log(req.params.id);
+    //console.log(userId)
+    User.findById(userId)
       .then(user => {
-          res.locals.currentUser = user;
-          //console.log(user);
-          next();
+        res.locals.currentUser = user;
+        //console.log(user);
+        next();
       })
       .catch(error => {
-          console.log(`Error fetching user by ID: ${error.message}`);
+        console.log(`Error fetching user by ID: ${error.message}`);
       })
-},
-showViewUserPage: (req, res) => {
-res.render("users/userPage");
-},
-//------------------ end ------------------
+  },
+  showViewUserPage: (req, res) => {
+    res.render("users/userPage");
+  },
+  //------------------ end ------------------
 
 
 
 
-//User Project Methods
-//------------------ start ------------------
-showProjects: (req, res, next) => {
-  
-  let userId = req.params.id;
-  console.log("RES")
-  console.log(userId)
+  //User Project Methods
+  //------------------ start ------------------
+  showProjects: (req, res, next) => {
 
-  User.findById(userId)
+    let userId = req.params.id;
+    console.log("RES")
+    console.log(userId)
+
+    User.findById(userId)
       .then(user => {
-          res.locals.currentUser = user;
-          next();
+        res.locals.currentUser = user;
+        next();
       })
       .catch(error => {
-          console.log(`Error fetching user by ID: ${error.message}`);
+        console.log(`Error fetching user by ID: ${error.message}`);
       })
-},
-showViewProjects: (req, res) => {
-res.render("users/myProjects");
-},
-//------------------ end ------------------
+  },
+  showViewProjects: (req, res) => {
+    res.render("users/myProjects");
+  },
+  //------------------ end ------------------
 
 
 
 
-//User Post Methods
-//------------------ start ------------------
-showPosts: (req, res, next) => {
-  const db = mongoose.connection;
-  var dbo = db
+  //User Post Methods
+  //------------------ start ------------------
+  showPosts: (req, res, next) => {
 
-  var queryUsername = { Username: req.body.username, Password: req.body.password };
+    let userId = req.params.id;
 
-  let userId = req.params.id;
+    const db = mongoose.connection;
+    var dbo = db
 
-  //console.log("userIDNEW");
-  //console.log(userId);
+    var queryID = { postingUserID: userId };
 
-  User.findById(userId)
-      .then(user => {
-          res.locals.redirect
-          res.locals.currentUser = user;
-          res.locals.currentPost = post;
-          next();
-      })
-      .catch(error => {
-          console.log(`Error fetching user by ID: ${error.message}`);
-      })
-},
-showViewPosts: (req, res) => {
-res.render("users/myPosts");
-},
-//------------------ end ------------------
+    Post.find(queryID)
+        .then(posts => {
+            res.locals.posts = posts;
+            console.log(res.locals.posts);
+            next();
+        })
+        .catch(error => {
+            console.log(`Error fetching course data: ${error.message}`);
+            next(error);
+        })
+
+  },
+  showViewPosts: (req, res) => {
+    res.render("users/myPosts");
+  },
+  //------------------ end ------------------
 }

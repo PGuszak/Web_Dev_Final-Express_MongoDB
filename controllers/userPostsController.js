@@ -38,7 +38,7 @@ module.exports = {
             postPicture: '',
             userName: '',
             comments: '',
-            likes: '',
+            likes: 0,
         });
         Post.create(newPost)
             .then(post => {

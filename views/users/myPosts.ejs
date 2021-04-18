@@ -1,18 +1,70 @@
+
 <br>
 
 <h2 class="table whiteText">
-    Posts - <%= currentUser.firstName %>  <%= currentUser.lastName %> 
+    Posts
 </h2>
 
 <table class="table whiteText">
     <thead>
         <tr>
             <th>Posted By ID: </th>
-            <th>Date</th>
-            <th>Content</th>
+            <th>Date:</th>
+            <th>Content:</th>
+            <th>Likes:</th>
         </tr>
     </thead>
     <tbody>
+
+        
+
+        <% posts.forEach(post => { %>
+            <tr>
+                <td>
+                        <%= post.postingUserID %>
+                        
+                </td>
+
+                <td>
+                    <%= post.createdAt %>
+                </td>
+
+                <td>
+                    <%= post.caption %>
+                </td>
+
+                <td>
+                    <%= post.likes %>
+                </td>
+
+                
+            </tr>
+
+        <% }) %>
+
         
     </tbody>
+
+
+    
+
+
+
 </table>
+
+
+<!-- <div class="col-lg-6 col-md-6 col-sm-6 col-6 align-self-center  justify-content-center">
+    <a class="" href="" style="color: white">
+        <%= posts[0].postingUserID %>
+    </a>
+</div>
+-->
+
+
+<div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-start  ">
+    <a class="border" href="<%= `/home/${posts[0].postingUserID}` %> " style="color: white; background-color: gray;">
+        <i class="fas fa-home fa-3x ">
+            Return Home
+        </i>
+    </a>
+</div>
