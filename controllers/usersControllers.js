@@ -256,6 +256,10 @@ showPosts: (req, res, next) => {
   var queryUsername = { Username: req.body.username, Password: req.body.password };
 
   let userId = req.params.id;
+
+  console.log("userIDNEW");
+  console.log(userId);
+
   User.findById(userId)
       .then(user => {
           res.locals.redirect

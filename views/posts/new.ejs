@@ -1,0 +1,32 @@
+
+<br>
+<h2 class="table whiteText text-center">
+   New Post
+</h2>
+
+<div class="form-data">
+
+    <div class="row d-flex justify-content-center">
+        <div class="col-4">
+            <form action="<%=`/posts/${user._id}/create` %>" method="POST">
+                <div row>
+
+                    
+                    <div>
+                        <label for="txtCaption">Caption</label>
+                    </div>
+                    <div>
+                        <input class="form-control" type="text" name="caption" id="txtCaption" placeholder="What are you thinking?" autofocus
+                            required>
+                    </div>
+                    <!--name is for server side id is for client side processing-->
+                    <br>
+                    <div>
+                        <button type="submit" class="btn btn-primary btn-block">Create</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

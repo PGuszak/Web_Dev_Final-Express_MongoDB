@@ -1,76 +1,65 @@
 "use strict";
 
 const { reset } = require("nodemon");
-
-const Post = require("../models/posts"),
-User = require("../models/user"),
-passport = require("passport"),
-mongoose = require("mongoose"),
-
-getUserParams = body => {
-    return {
-      firstName: body.firstName,
-      lastName: body.lastName,
-      Gender: body.Gender,
-      City_State: body.City_State,
-      Username: body.Username,
-      Email: body.Email,
-      Password: body.Password,
-      Vpassword: body.Vpassword,
-      DOB: body.DOB,
-      Bio: body.Bio,
-      SecurityQ1: body.SecurityQ1,
-      SecurityA1: body.SecurityA1,
-      SecurityQ2: body.SecurityQ2,
-      SecurityA2: body.SecurityA2,
-      SecurityQ3: body.SecurityQ3,
-      SecurityA3: body.SecurityA3
-    };
-  },
-
-
-getPostParams = body => {
-    return {
-        userID: body.userID,
-        caption: body.caption,
-        postPicture: body.postPicture,
-        userName: body.userName,
-        comments: body.comments,
-        likes: body.likes
-    };
-};
+const Post = require("../models/posts");
 
 
 
 module.exports = {
+
+    //Used to call the new post page, not needed since we are now creating a post from the home page.
+    new: (req, res) => {
+        let userId = req.params.id;
+        console.log("PARAMS")
+        console.log(userId)
+
+
+        User.findById(userId)
+            .then(user => {
+                res.render("posts/new", { user: user });
+            })
+            .catch(error => {
+                console.log(`Error fetching course by ID: ${error.message}`);
+                next(error);
+            })
+
+    },
+
+    //Used to create a new post then upload it to mongoDB
+    create: (req, res, next) => {
+
+        let courseId = req.params.id;
+        console.log(courseId);
+
+
+        let newPost = new Post({
+            postingUserID: courseId,
+            caption: req.body.caption,
+            postPicture: '',
+            userName: '',
+            comments: '',
+            likes: '',
+        });
+        Post.create(newPost)
+            .then(post => {
+                res.locals.course = post;
+                res.redirect(`/home/${courseId}`);
+                //res.locals.redirect = `/home/${result._id}`;
+
+            })
+            .catch(error => {
+                console.log(`Error saving post ${error.message}`)
+                next(error);
+            })
+
+    },
+
+    
+    //Takes us back to the home page after creating a new post
     redirectView: (req, res, next) => {
         let redirectPath = res.locals.redirect;
         if (redirectPath != undefined) res.redirect(redirectPath);
         else next();
-    },
-
-    makePost: (req, res, next) => {
-        console.log("here");
-        if (req.skip) return next();
-        console.log("here");
-
-        let PostParams = getPostParams(req.body);
-
-        //might not work......
-        let newPost = new Post(PostParams);
-        Post.register(newPost, req.body.userID, (error, post) => {
-            if (post) {
-                req.flash("success", 'User Post Created!');
-                newUser.save();
-                res.locals.redirect = `/home/${currentUser._id}`;
-                next();
-            }
-            else{
-                req.flash("error", `Failed to create Post: ${error.message}`);
-            res.locals.redirect = `/home/${currentUser._id}`;
-            next();
-            }
-        });
-    },
+    }
 
 }

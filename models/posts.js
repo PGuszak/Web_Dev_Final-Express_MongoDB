@@ -1,12 +1,11 @@
-const mongoose = require('mongoose'),
-passportLogicalMongoose = require("passport-local-mongoose"),
+"use strict"
 
+const mongoose = require('mongoose'),
 { Schema } = require('mongoose'),
-passport = require("passport");
 
 UserPostsSchema = new Schema(
     {
-        userID: {type: String, required: true},
+        postingUserID: {type: String, required: true},
         caption: {type: String}, 
         postPicture: {type: String},
         userName: {type: String},
@@ -17,10 +16,5 @@ UserPostsSchema = new Schema(
         timestamps: true
     }
 );
-
-
-UserSchema.plugin(passportLogicalMongoose, {
-    usernameField: "userName"
-  });
 
 module.exports = mongoose.model("Post", UserPostsSchema);

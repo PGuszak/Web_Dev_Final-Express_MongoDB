@@ -115,6 +115,10 @@ router.get("/users/:id/userPage", userController.showUserPage, userController.sh
 
 //userPosts
 router.get("/users/:id/posts", userController.showPosts, userController.showViewPosts);
+//router.get("/posts/:id/new", userPostController.new); //Not need since we can create a post from main now
+
+
+router.post("/posts/:id/create",  userPostController.create);
 
 
 //userProjects
@@ -126,7 +130,7 @@ router.get("/users/:id/friends", userController.showFriends, userController.show
 
 
 //makepost DOESN'T WORK RN
-router.post("/user/:id/post", userPostController.makePost, userPostController.redirectView);
+//router.post("/user/:id/post", userPostController.makePost, userPostController.redirectView);
 
 //router.get("/user/edit", userController.edit);
 

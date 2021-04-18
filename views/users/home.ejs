@@ -113,12 +113,12 @@
                 <div class="row mt-4 border">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-center">
                         <a class="" href="/logout">
-                            <i class="fas fa-user-friends fa-3x "></i>
+                            <i class="fas fa-sign-out-alt fa-3x "></i>
                         </a>
                     </div>
 
                     <div class="col-lg-6 col-md-6 col-sm-6 col-6 align-self-center">
-                        <a class="" href="/logout" style="color: blue">
+                        <a class="" href="/logout" style="color: black">
                             Logout
                         </a>
                     </div>
@@ -133,26 +133,41 @@
 
 
 
-  
-        <div class="middleColGeneral col-lg-8 col-md-12 col-sm-12 col-12">
-            <div class="container-fluid d-flex justify-content-center">                
-                    <div class="card cardUserPost">
-                        <div class="card-header text-center">
-                            Create Post
-                        </div><!-- help here!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
-                        <div class="card-body">
-                            <textarea class="form-control" id="message" name = "caption" rows="1"
-                                placeholder="What are you thinking?"></textarea>
-                            <form class="mt-2 mb-2" method="POST" action="<%= `/users/${currentUser.id}/post` %> ">
-                                <input type="file" id="myFile" name="filename">
-                            </form>
-                            <hr class="hrLineCreatePost">
-                            <a href="<%= `/home/${currentUser.id}` %>" class="btn btn-primary btn-block shareButton">Share</a>
-                        </div>
-                    </div>
-                </form>
-            </div>
 
+    <div class="middleColGeneral col-lg-8 col-md-12 col-sm-12 col-12">
+
+        <!--Used to create the post creation box -->
+        <!--Start-->
+        <div class="container-fluid d-flex justify-content-center">
+            <div class="card cardUserPost">
+
+                <div class="card-header text-center">
+                    Create Post
+                </div>
+
+                <div class="form-data card-body">
+                    <div class="row d-flex justify-content-center"></div>
+                    <form action="<%=`/posts/${currentUser._id}/create` %>" method="POST">
+                        <div row>
+
+
+                            <textarea class="form-control" type="text" name="caption" id="txtCaption" rows="1"
+                                placeholder="What are you thinking?" autofocus required></textarea>
+
+                            <hr class="hrLineCreatePost">
+                            <!--name is for server side id is for client side processing-->
+
+                            <div>
+                                <button type="submit" class="btn btn-primary btn-block">Create</button>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+        <!--End-->
 
 
         <div class="container-fluid d-flex justify-content-center">
