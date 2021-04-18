@@ -3,6 +3,7 @@
 const { reset } = require("nodemon");
 
 const User = require("../models/user"),
+  Post = require("../models/posts"),
   passport = require("passport"),
   mongoose = require("mongoose"),
 
@@ -257,13 +258,14 @@ showPosts: (req, res, next) => {
 
   let userId = req.params.id;
 
-  console.log("userIDNEW");
-  console.log(userId);
+  //console.log("userIDNEW");
+  //console.log(userId);
 
   User.findById(userId)
       .then(user => {
           res.locals.redirect
           res.locals.currentUser = user;
+          res.locals.currentPost = post;
           next();
       })
       .catch(error => {
