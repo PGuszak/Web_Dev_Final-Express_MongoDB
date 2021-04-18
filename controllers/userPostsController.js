@@ -29,32 +29,47 @@ module.exports = {
     create: (req, res, next) => {
 
         let courseId = req.params.id;
-        console.log(courseId);
+        var userName = ''
+        console.log(req.body.currentUser)
 
 
-        let newPost = new Post({
-            postingUserID: courseId,
-            caption: req.body.caption,
-            postPicture: '',
-            userName: '',
-            comments: '',
-            likes: 0,
-        });
-        Post.create(newPost)
-            .then(post => {
-                res.locals.course = post;
-                res.redirect(`/home/${courseId}`);
-                //res.locals.redirect = `/home/${result._id}`;
+        User.findById(courseId)
+            .then(user => {
+                //console.log(user.Username)
+                userName = user.Username
+
+                let newPost = new Post({
+                    postingUserID: courseId,
+                    caption: req.body.caption,
+                    postPicture: '',
+                    userName: userName,
+                    comments: '',
+                    likes: 0,
+                });
+
+                Post.create(newPost)
+                    .then(post => {
+                        res.locals.course = post;
+                        res.redirect(`/home/${courseId}`);
+                        //res.locals.redirect = `/home/${result._id}`;
+
+                    })
+                    .catch(error => {
+                        console.log(`Error saving post ${error.message}`)
+                        next(error);
+                    })
 
             })
             .catch(error => {
-                console.log(`Error saving post ${error.message}`)
-                next(error);
+                console.log(`Error fetching course by ID: ${error.message}`);
+
             })
+
+
 
     },
 
-    
+
     //Takes us back to the home page after creating a new post
     redirectView: (req, res, next) => {
         let redirectPath = res.locals.redirect;
