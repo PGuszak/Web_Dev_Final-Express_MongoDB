@@ -1,16 +1,19 @@
 <br>
 
+<%console.log(currentUser) %>
+
+
 
 <div class="row">
 
-
+    
 <h2 class="table whiteText col-lg-12 col-md-12 col-sm-12 col-12 d-flex justify-content-center ">
-    <%= posts[0].userName %>'s Posts
+    <%= currentUser.Username %>'s Posts
 
 </h2>
 
 <div class="col-lg-12 col-md-12 col-sm-12 col-12 d-flex justify-content-center ">
-    <a class="" href="<%= `/home/${posts[0].postingUserID}` %> " style="color: white;">
+    <a class="" href="<%= `/home/${currentUser._id}` %> " style="color: white;">
         <i class="fas fa-home fa-3x ">
             Return Home
         </i>
@@ -25,53 +28,51 @@
 
 <table class="table whiteText border">
 
-        <% posts.forEach(post=> { %>
+    <% posts.forEach(post=> { %>
 
 
-            <div class="container-fluid d-flex justify-content-center">
-                <div class="card cardGeneralPost">
-                    <div class="card-header text-start">
-                        <div>
-                            User: <%= post.userName %>
-                        </div>
-                        <div>
-                            Published: <%= post.createdAt %>
-                        </div>
+        <div class="container-fluid d-flex justify-content-center">
+            <div class="card cardGeneralPost">
+                <div class="card-header text-start">
+                    <div>
+                        User: <%= post.userName %>
                     </div>
-
-                    <div class="card-body">
-                        <p class="card-text">
-                            <%= post.caption %>
-                        </p>
-                    </div>
-
-                    <div class="card-footer d-flex justify-content-center">
-                        <p class="card-text">
-                            Likes:
-                            <%= post.likes %>
-                        </p>
-                    </div>
-
-                    <div class="card-footer d-flex justify-content-center">
-                        <a href="" class="card-link"><i class="fas fa-heart"></i> Like</a>
-                        <a href="" class="card-link"><i class="fa fa-comment"></i> Comment</a>
-                        <a href="" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
+                    <div>
+                        Published: <%= post.createdAt %>
                     </div>
                 </div>
 
+                <div class="card-body">
+                    <p class="card-text">
+                        <%= post.caption %>
+                    </p>
+                </div>
+
+                <span class="card-footer d-flex justify-content-start">
+                    
+                    <span class="card-text">
+                        <i class="fas fa-heart" style="color: red;"></i>
+                        <%= post.likes %>
+                    </span>
+                </span>
+
+                
+
+                <div class="card-footer d-flex justify-content-center">
+                    <a href="" class="card-link"><i class="fas fa-heart"></i> Like</a>
+                    <a href="" class="card-link"><i class="fa fa-comment"></i> Comment</a>
+                    <a href="" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
+                </div>
             </div>
-            
-            <br>
+
+        </div>
+
+        <br>
 
 
-            <% }) %>
+        <% }) %>
 
 </table>
 
 
-<!-- <div class="col-lg-6 col-md-6 col-sm-6 col-6 align-self-center  justify-content-center">
-    <a class="" href="" style="color: white">
-        <%= posts[0].postingUserID %>
-    </a>
-</div>
--->
+

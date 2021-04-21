@@ -15,6 +15,7 @@ html {
 
 body{
     background-color: #23272A;
+    overflow-y:hidden;
 }
 
 footer {

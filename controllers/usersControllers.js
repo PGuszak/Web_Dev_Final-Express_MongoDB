@@ -185,7 +185,21 @@ module.exports = {
     User.findById(userId)
       .then(user => {
         res.locals.currentUser = user;
-        next();
+
+
+
+        Post.find().sort({ createdAt : `descending`})
+          .then(posts => {
+            res.locals.posts = posts;
+            console.log(res.locals.posts);
+            next();
+          })
+          .catch(error => {
+            console.log(`Error fetching course data: ${error.message}`);
+            next(error);
+          })
+
+
       })
       .catch(error => {
         console.log(`Error fetching user by ID: ${error.message}`);
@@ -257,18 +271,34 @@ module.exports = {
     const db = mongoose.connection;
     var dbo = db
 
-    var queryID = { postingUserID: userId };
 
-    Post.find(queryID)
-        .then(posts => {
+
+    User.findById(userId)
+      .then(user => {
+        res.locals.currentUser = user;
+
+
+        var queryID = { postingUserID: userId };
+
+        Post.find(queryID)
+          .then(posts => {
             res.locals.posts = posts;
             console.log(res.locals.posts);
             next();
-        })
-        .catch(error => {
+          })
+          .catch(error => {
             console.log(`Error fetching course data: ${error.message}`);
             next(error);
-        })
+          })
+
+
+      })
+      .catch(error => {
+        console.log(`Error fetching user by ID: ${error.message}`);
+      })
+
+
+
 
   },
   showViewPosts: (req, res) => {

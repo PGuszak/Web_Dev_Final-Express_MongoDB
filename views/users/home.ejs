@@ -13,10 +13,18 @@
 
 </header>
 
-<div class="row d-flex mainDiv">
 
 
-    <div class="col-lg-4 d-flex justify-content-center">
+<p class=" row introHeader ">Hello, <%= currentUser.firstName %>! </p>
+
+
+<div class="row d-flex mainDiv ">
+
+
+
+
+    <div class="col-lg-4 d-flex justify-content-center ">
+
 
         <div class="card toolBoxGeneral d-none d-lg-block ">
 
@@ -134,7 +142,7 @@
 
 
 
-    <div class="middleColGeneral col-lg-8 col-md-12 col-sm-12 col-12">
+    <div class="middleColGeneral col-lg-8 col-md-12 col-sm-12 col-12  ">
 
         <!--Used to create the post creation box -->
         <!--Start-->
@@ -167,122 +175,71 @@
 
             </div>
         </div>
+        
         <!--End-->
 
 
-        <div class="container-fluid d-flex justify-content-center">
-            <div class="card cardGeneralPost">
-                <div class="card-header text-start">
-                    <div>
-                        Gabriel Jones
+
+
+
+
+
+
+
+        <br>
+
+        <table class="table whiteText border">
+
+            <% posts.forEach(post=> { %>
+
+
+                <div class="container-fluid d-flex justify-content-center">
+                    <div class="card cardGeneralPost">
+                        <div class="card-header text-start">
+                            <div>
+                                User: <%= post.userName %>
+                            </div>
+                            <div>
+                                Published: <%= post.createdAt %>
+                            </div>
+                        </div>
+
+                        <div class="card-body">
+                            <p class="card-text">
+                                <%= post.caption %>
+                            </p>
+                        </div>
+
+                        <span class="card-footer d-flex justify-content-start">
+                            
+                            <span class="card-text">
+                                <i class="fas fa-heart" style="color: red;"></i>
+                                <%= post.likes %>
+                            </span>
+                        </span>
+
+                        
+
+                        <div class="card-footer d-flex justify-content-center">
+                            <a href="" class="card-link"><i class="fas fa-heart"></i> Like</a>
+                            <a href="" class="card-link"><i class="fa fa-comment"></i> Comment</a>
+                            <a href="" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
+                        </div>
                     </div>
-                    <div>
-                        2/25/2021
-                    </div>
+
                 </div>
 
-                <div class="card-body">
+                <br>
 
 
-                    <p class="card-text">
-                        When life gives you lemonade, make lemons
-                    </p>
+                <% }) %>
 
-                    <div class="d-flex justify-content-center">
-                        <img src="/images/userPosts/coral1.jpg" width="480" height="480" class="img-fluid" alt="">
-                    </div>
-                </div>
-
-                <div class="card-footer d-flex justify-content-center">
-                    <a href="" class="card-link"><i class="fas fa-heart"></i> Like</a>
-                    <a href="" class="card-link"><i class="fa fa-comment"></i> Comment</a>
-                    <a href="" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
-                </div>
-            </div>
-
-        </div>
-
-
-        <div class="container-fluid d-flex justify-content-center">
-            <div class="card cardGeneralPost">
-                <div class="card-header text-start">
-                    <div>
-                        Paul Guszak
-                    </div>
-                    <div>
-                        2/25/2021
-                    </div>
-                </div>
-
-                <div class="card-body">
-                    <p class="card-text">
-                        Im having an allergic reaction to pain
-                    </p>
-                </div>
-
-                <div class="card-footer d-flex justify-content-center">
-                    <a href="" class="card-link"><i class="fas fa-heart"></i> Like</a>
-                    <a href="" class="card-link"><i class="fa fa-comment"></i> Comment</a>
-                    <a href="" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="container-fluid d-flex justify-content-center">
-            <div class="card cardGeneralPost">
-                <div class="card-header text-start">
-                    <div>
-                        Cesar Ramirez (ME)
-                    </div>
-                    <div>
-                        2/26/2021
-                    </div>
-                </div>
-
-                <div class="card-body">
-                    <p class="card-text">
-                        How do I center align things?
-                    </p>
-                </div>
-
-                <div class="card-footer d-flex justify-content-center">
-                    <a href="" class="card-link"><i class="fas fa-heart"></i> Like</a>
-                    <a href="" class="card-link"><i class="fa fa-comment"></i> Comment</a>
-                    <a href="" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="container-fluid d-flex justify-content-center">
-            <div class="card cardGeneralPost">
-                <div class="card-header text-start">
-                    <div>
-                        Cesar Ramirez (ME)
-                    </div>
-                    <div>
-                        2/26/2021
-                    </div>
-                </div>
-
-                <div class="card-body">
-                    <p class="card-text">
-                        Nvm figured it out!
-                    </p>
-                </div>
-
-                <div class="card-footer d-flex justify-content-center">
-                    <a href="" class="card-link"><i class="fas fa-heart"></i> Like</a>
-                    <a href="" class="card-link"><i class="fa fa-comment"></i> Comment</a>
-                    <a href="" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
-                </div>
-            </div>
-
-        </div>
+        </table>
 
     </div>
 
+
+</div>
 
 </div>
 
