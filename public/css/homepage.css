@@ -17,6 +17,7 @@
 body {
     background-color: #23272A;
     padding-bottom: 0;
+    overflow-y:hidden;
 }
 
 .footer {
@@ -137,7 +138,16 @@ textarea {
     margin-top: 20px;
     margin-left: 40px;
     width: 500px;
-    height: 450px;
+    height: 375px;
+    background-color: white;
+}
+
+.toolBoxFriends {
+
+    margin-top: 20px;
+    margin-left: 40px;
+    width: 500px;
+    height: 350px;
     background-color: white;
 }
 

@@ -18,126 +18,157 @@
 <p class=" row introHeader ">Hello, <%= currentUser.firstName %>! </p>
 
 
-<div class="row d-flex mainDiv ">
+<div class="row d-flex mainDiv  ">
 
 
 
 
-    <div class="col-lg-4 d-flex justify-content-center ">
+    <div class="col-lg-4  justify-content-center ">
+
+        <div class="row justify-content-center">
 
 
-        <div class="card toolBoxGeneral d-none d-lg-block ">
+            <div class="card toolBoxGeneral d-none d-lg-block col-lg-8 ">
 
-            <div class="card-header">
+                <div class="card-header">
 
-                <div class="col-lg-12 col-md-12 col-sm-12 col-12 d-flex justify-content-center ">
-                    <%= currentUser.firstName %>
-                        <%= currentUser.lastName %></a>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-12 d-flex justify-content-center ">
+                        <%= currentUser.firstName %>
+                            <%= currentUser.lastName %></a>
+                    </div>
+
                 </div>
 
+                <div class="card-body ">
+
+
+                    <!-- userPage -->
+                    <!-- start -->
+                    <div class="row mt-0 border">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-center">
+                            <a class="" href="<%= `/users/${currentUser.id}/userPage` %> ">
+                                <i class="fas fa-user-astronaut fa-3x "></i>
+                            </a>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-6 align-self-center">
+                            <a class="" href="<%= `/users/${currentUser.id}/userPage` %> " style="color: black">
+                                My Account
+                            </a>
+                        </div>
+
+                    </div>
+                    <!-- end -->
+
+
+                    <!-- Projects -->
+                    <!-- start -->
+                    <div class="row mt-4 border">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-center">
+                            <a class="" href="<%= `/users/${currentUser.id}/projects` %> ">
+                                <i class="fas fa-folder-open fa-3x "></i>
+                            </a>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-6 align-self-center">
+                            <a class="" href="<%= `/users/${currentUser.id}/projects` %> " style="color: black">
+                                My Projects
+                            </a>
+                        </div>
+
+                    </div>
+                    <!-- end -->
+
+
+                    <!-- Posts -->
+                    <!-- start -->
+                    <div class="row mt-4 border">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-center">
+                            <a class="" href="<%= `/users/${currentUser.id}/posts` %> ">
+                                <i class="fas fa-keyboard fa-3x "></i>
+                            </a>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-6 align-self-center">
+                            <a class="" href="<%= `/users/${currentUser.id}/posts` %> " style="color: black">
+                                My Posts
+                            </a>
+                        </div>
+
+                    </div>
+                    <!-- end -->
+
+
+                    <!-- Friends -->
+                    <!-- start -->
+
+                    <!-- end -->
+
+
+                    <!-- logout -->
+                    <!-- start -->
+                    <div class="row mt-4 border">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-center">
+                            <a class="" href="/logout">
+                                <i class="fas fa-sign-out-alt fa-3x "></i>
+                            </a>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-6 align-self-center">
+                            <a class="" href="/logout" style="color: black">
+                                Logout
+                            </a>
+                        </div>
+
+                    </div>
+                    <!-- end -->
+
+
+                </div>
             </div>
 
-            <div class="card-body">
 
 
-                <!-- userPage -->
-                <!-- start -->
-                <div class="row mt-0 border">
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-center">
-                        <a class="" href="<%= `/users/${currentUser.id}/userPage` %> ">
-                            <i class="fas fa-user-astronaut fa-3x "></i>
-                        </a>
-                    </div>
-
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-6 align-self-center">
-                        <a class="" href="<%= `/users/${currentUser.id}/userPage` %> " style="color: black">
-                            My Account
-                        </a>
-                    </div>
-
-                </div>
-                <!-- end -->
 
 
-                <!-- Projects -->
-                <!-- start -->
-                <div class="row mt-4 border">
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-center">
-                        <a class="" href="<%= `/users/${currentUser.id}/projects` %> ">
-                            <i class="fas fa-folder-open fa-3x "></i>
-                        </a>
-                    </div>
+            <div class="card toolBoxFriends d-none d-lg-block col-lg-8 ">
 
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-6 align-self-center">
-                        <a class="" href="<%= `/users/${currentUser.id}/projects` %> " style="color: black">
-                            My Projects
-                        </a>
+                <div class="card-header">
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-12 d-flex justify-content-center ">
+
+
+                        <!-- <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-center">
+                            <a class="" href="<%= `/users/${currentUser.id}/friends` %> ">
+                                <i class="fas fa-user-friends fa-3x "></i>
+                            </a>
+                        </div>
+                    -->
+
+
+                        <div class="">
+                            <a class="" href="<%= `/users/${currentUser.id}/friends` %> " style="color: black">
+                                My Friends
+                            </a>
+                        </div>
                     </div>
 
                 </div>
-                <!-- end -->
+
+                <div class="card-body ">
 
 
-                <!-- Posts -->
-                <!-- start -->
-                <div class="row mt-4 border">
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-center">
-                        <a class="" href="<%= `/users/${currentUser.id}/posts` %> ">
-                            <i class="fas fa-keyboard fa-3x "></i>
-                        </a>
-                    </div>
-
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-6 align-self-center">
-                        <a class="" href="<%= `/users/${currentUser.id}/posts` %> " style="color: black">
-                            My Posts
-                        </a>
-                    </div>
+                    <!-- userPage -->
+                    <!-- start -->
 
                 </div>
-                <!-- end -->
-
-
-                <!-- Friends -->
-                <!-- start -->
-                <div class="row mt-4 border">
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-center">
-                        <a class="" href="<%= `/users/${currentUser.id}/friends` %> ">
-                            <i class="fas fa-user-friends fa-3x "></i>
-                        </a>
-                    </div>
-
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-6 align-self-center">
-                        <a class="" href="<%= `/users/${currentUser.id}/friends` %> " style="color: black">
-                            My Friends
-                        </a>
-                    </div>
-
-                </div>
-                <!-- end -->
-
-
-                <!-- logout -->
-                <!-- start -->
-                <div class="row mt-4 border">
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-center">
-                        <a class="" href="/logout">
-                            <i class="fas fa-sign-out-alt fa-3x "></i>
-                        </a>
-                    </div>
-
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-6 align-self-center">
-                        <a class="" href="/logout" style="color: black">
-                            Logout
-                        </a>
-                    </div>
-
-                </div>
-                <!-- end -->
-
 
             </div>
         </div>
     </div>
+
+
+
 
 
 
@@ -175,12 +206,8 @@
 
             </div>
         </div>
-        
+
         <!--End-->
-
-
-
-
 
 
 
@@ -211,14 +238,14 @@
                         </div>
 
                         <span class="card-footer d-flex justify-content-start">
-                            
+
                             <span class="card-text">
                                 <i class="fas fa-heart" style="color: red;"></i>
                                 <%= post.likes %>
                             </span>
                         </span>
 
-                        
+
 
                         <div class="card-footer d-flex justify-content-center">
                             <a href="" class="card-link"><i class="fas fa-heart"></i> Like</a>
@@ -240,6 +267,9 @@
 
 
 </div>
+
+
+
 
 </div>
 
