@@ -28,16 +28,17 @@
 
             <div class="row justify-content-center">
                 <div class="col-12 text-center">
-                    <span class="userName border-dark rounded"> Cesar Axel Ramirez </span>
+                    <span class="userName border-dark rounded"> <%= currentUser.firstName %> <%= currentUser.lastName %></span>
                 </div>
 
                 <div class="col-12 text-center">
-                    <span class="userNameSub border-dark rounded"> @Ramirece </span>
+                    <span class="userNameSub border-dark rounded"> @<%= currentUser.Handle %>#<%= currentUser.UniqueID %></span>
                 </div>
             </div>
 
             <div class="row justify-content-center pt-2 pb-4">
-                <button type="button" class="col-4 btn btn-primary">Add Friend</button>
+                <button type="button" class="col-2 btn btn-primary">Add Friend</button>
+                <button href="<%= `/users/${currentUser._id}/edit` %> " type="button" class="col-2 btn btn-primary">Edit</button> <!--here-->
             </div>
 
         </div>

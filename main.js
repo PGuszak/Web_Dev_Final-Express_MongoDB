@@ -129,10 +129,9 @@ router.get("/users/:id/projects", userController.showProjects, userController.sh
 router.get("/users/:id/friends", userController.showFriends, userController.showViewFriends);
 
 
-//makepost DOESN'T WORK RN
-//router.post("/user/:id/post", userPostController.makePost, userPostController.redirectView);
-
-//router.get("/user/edit", userController.edit);
+//userEdit
+router.get("/users/:id/edit", userController.edit, userController.showEdit);
+//router.put("/users/:id/update", userController.update, redirectView);
 
 
 

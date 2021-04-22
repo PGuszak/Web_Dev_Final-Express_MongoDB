@@ -13,6 +13,9 @@ const User = require("../models/user"),
       firstName: body.firstName,
       lastName: body.lastName,
       Gender: body.Gender,
+      Age: body.Age,
+      Handle: body.Handle,
+      UniqueID: body.UniqueID,
       City_State: body.City_State,
       Username: body.Username,
       Email: body.Email,
@@ -47,16 +50,41 @@ module.exports = {
   new: (req, res) => {
     res.render("users/new");
   },
+
+
   edit: (req, res) => {
+    console.log("here");
     let userId = req.params.id;
     User.findById(userId)
       .then(user => {
-        res.render("users/edit", { user: user });
+        res.locals.currentUser = user;
+        next();
       })
       .catch(error => {
         console.log(`Error fetching user by ID: ${error.message}`);
         next(error);
       })
+  },
+  showEdit: (req, res) => {
+    res.render("/users/edit");
+  },
+
+
+  update: (req, res, next) => {
+    let userId = req.params.id,
+      userParams = getUserParams(req.body);
+
+    User.findByIdAndUpdate(userId, {
+      $set: userParams
+    })
+      .then(subscriber => {
+        res.locals.redirect = `/users/${userId}/userPage`;
+        next();
+      })
+      .catch(error => {
+        console.log(`Error updating User by ID: ${error.message}`);
+        next(error);
+      });
   },
 
 
@@ -65,7 +93,11 @@ module.exports = {
     let userParams = getUserParams(req.body);
 
     let newUser = new User(userParams);
-
+    newUser.Handle = newUser.Username;
+    var min = Math.ceil(10000);
+    var max = Math.floor(99999);
+    newUser.UniqueID = Math.floor(Math.random() * (max - min + 1)) + min;
+    console.log(newUser.UniqueID);
 
     //.register does not work
     User.register(newUser, req.body.Password, (error, user) => {
@@ -122,6 +154,10 @@ module.exports = {
     if (redirectPath != undefined) res.redirect(redirectPath);
     else next();
   },
+
+
+    //User Signin Methods
+  //------------------ start ------------------
   signinUser: (req, res, next) => {
     //console.log(req.body.username);
 
@@ -153,7 +189,7 @@ module.exports = {
       })
       .catch(err => console.error(`Failed to find document: ${err}`));
   },
-
+  //------------------ end ------------------
 
 
 
