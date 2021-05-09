@@ -21,12 +21,23 @@ body {
 }
 
 .footer {
-    
+    position: relative;
+    margin-left: 15px;
     left: 0;
     bottom: 0;
     width: 100%;
     color: grey;
     text-align: left;
+}
+
+.footer_info_buttton{
+    background-color: #23272A; 
+    color:whitesmoke; 
+    border-color: #23272A; 
+    padding:0%; 
+    padding-bottom: 0;
+    padding-top: 0;
+    box-shadow: none;
 }
 
 .form_container {

@@ -6,7 +6,8 @@ const user = require("./models/user");
 //use CTRL+SHIFT+M for seeing readme preview
 const express = require("express"),
     app = express(),
-    router = express.Router(),
+    //replace below then replace all routers (except one) with app
+    router = express.Router(), // this line should be router = require(./routes/index);
     homeController = require("./controllers/homeControllers"),
     errorController = require("./controllers/errorController"),
     userController = require("./controllers/usersControllers"),
@@ -24,7 +25,10 @@ User = require("./models/user");
 
 
 //mongoose connection
-mongoose.connect("mongodb://localhost:27017/Orbit_App", { useNewUrlParser: true });
+
+//need to change db later for cloud implementation
+mongoose.connect("mongodb://localhost:27017/Orbit_App", { useNewUrlParser: true }); 
+
 mongoose.set("useCreateIndex", true);
 const db = mongoose.connection;
 db.once("open", () => {
@@ -143,7 +147,7 @@ router.use(errorController.pageNotFoundError); //the page is not found/exists
 
 
 
-app.use("/", router);
+app.use("/", router); // the only router variable that will stay
 app.listen(app.get("port"), () => {
     console.log(`Server is running on port ${app.get("port")}`);
 

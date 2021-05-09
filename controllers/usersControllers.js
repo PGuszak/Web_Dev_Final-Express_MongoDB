@@ -97,7 +97,7 @@ module.exports = {
     var min = Math.ceil(10000);
     var max = Math.floor(99999);
     newUser.UniqueID = Math.floor(Math.random() * (max - min + 1)) + min;
-    console.log(newUser.UniqueID);
+    //console.log(newUser.UniqueID);
 
     //.register does not work
     User.register(newUser, req.body.Password, (error, user) => {
@@ -126,7 +126,7 @@ module.exports = {
         let messages = error.array().map(e => e.msg);
         req.flash("error", messages.join(" and "));
         req.skip = true;
-        console.log("here1");
+        //console.log("here1");
         res.local.redirect = "/homepage";
         next();
       }
@@ -227,7 +227,7 @@ module.exports = {
         Post.find().sort({ createdAt : `descending`})
           .then(posts => {
             res.locals.posts = posts;
-            console.log(res.locals.posts);
+            //console.log(res.locals.posts);
             next();
           })
           .catch(error => {
@@ -279,7 +279,7 @@ module.exports = {
 
     let userId = req.params.id;
     console.log("RES")
-    console.log(userId)
+    //console.log(userId)
 
     User.findById(userId)
       .then(user => {
@@ -319,7 +319,7 @@ module.exports = {
         Post.find(queryID)
           .then(posts => {
             res.locals.posts = posts;
-            console.log(res.locals.posts);
+            //console.log(res.locals.posts);
             next();
           })
           .catch(error => {

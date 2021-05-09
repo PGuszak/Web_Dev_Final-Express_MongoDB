@@ -31,7 +31,7 @@ module.exports = {
         let courseId = req.params.id;
         var userName = ''
         console.log(req.body.currentUser)
-
+        console.log("here???");
 
         User.findById(courseId)
             .then(user => {
