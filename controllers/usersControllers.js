@@ -52,21 +52,20 @@ module.exports = {
   },
 
 
-  edit: (req, res) => {
-    console.log("here");
+  edit: (req, res, next) => {
     let userId = req.params.id;
     User.findById(userId)
       .then(user => {
         res.locals.currentUser = user;
+        console.log(req.params.id);
         next();
       })
       .catch(error => {
         console.log(`Error fetching user by ID: ${error.message}`);
-        next(error);
       })
   },
   showEdit: (req, res) => {
-    res.render("/users/edit");
+    res.render("users/edit");
   },
 
 
@@ -92,12 +91,13 @@ module.exports = {
     if (req.skip) return next();
     let userParams = getUserParams(req.body);
 
+
+    //need a check to run through in the DB the UserID is unique
     let newUser = new User(userParams);
     newUser.Handle = newUser.Username;
     var min = Math.ceil(10000);
     var max = Math.floor(99999);
     newUser.UniqueID = Math.floor(Math.random() * (max - min + 1)) + min;
-    //console.log(newUser.UniqueID);
 
     //.register does not work
     User.register(newUser, req.body.Password, (error, user) => {
