@@ -7,9 +7,9 @@ const user = require("./models/user");
 const express = require("express"),
     app = express(),
     //replace below then replace all routers (except one) with app
-    router = express.Router(),
+    //router = express.Router(),
     // V this line should be
-    //router = require("./routes/index"),
+    router = require("./routes/index"),
     homeController = require("./controllers/homeControllers"),
     errorController = require("./controllers/errorController"),
     userController = require("./controllers/usersControllers"),
@@ -21,7 +21,7 @@ const express = require("express"),
     expressSession = require("express-session"),
     expressValidator = require("express-validator"),
     connectFlash = require("connect-flash"),
-    mongoose = require("mongoose");
+    mongoose = require("mongoose"),
 User = require("./models/user");
 
 
@@ -49,13 +49,13 @@ router.use(
     })
 );
 
-router.use(express.json());
-router.use(expressValidator());
-router.use(cookieParser("my_passcode"));
+app.use(express.json());
+app.use(expressValidator());
+app.use(cookieParser("my_passcode"));
 
 app.use(express.static(__dirname + '/public'));  //so we can access the public folder
 
-router.use(expressSession({
+app.use(expressSession({
     secret: "my_passcode",
     cookie: {
         maxAge: 360000
@@ -64,30 +64,30 @@ router.use(expressSession({
     saveUninitialized: false
 }));
 
-router.use(connectFlash());
+app.use(connectFlash());
 
-router.use(passport.initialize());
-router.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
 passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-router.use((req, res, next) => {
+app.use((req, res, next) => {
     res.locals.flashMessages = req.flash();
     res.locals.loggedIn = req.isAuthenticated();
     res.locals.currentUser = req.user;
     next();
 
-})
+});
 
 
 
 
 //preprosessing 
-router.use(express.static("public"));  //can serve static content to users
-router.use(layouts);
+app.use(express.static("public"));  //can serve static content to users
+app.use(layouts);
 
-
+/*
 //signup routes
 router.get("/", homeController.showSignIn); //this is what renders first in the layout.ejs file
 router.get("/signup", homeController.showSignUp);
@@ -132,7 +132,7 @@ router.put("/users/:id/update", userController.update, userController.redirectVi
 //error pages go to errorControler.js for the renders
 router.use(errorController.internalServererror); //there is a server error
 router.use(errorController.pageNotFoundError); //the page is not found/exists
-
+*/
 
 
 

@@ -58,7 +58,7 @@ module.exports = {
     User.findById(userId)
       .then(user => {
         res.locals.currentUser = user;
-        //console.log(req.params.id);
+        console.log(req.params.id);
         next();
       })
       .catch(error => {
@@ -150,7 +150,7 @@ module.exports = {
     next();
   },
 
-  redirectView: (req, res, rext) => {
+  redirectView: (req, res, next) => {
     let redirectPath = res.locals.redirect;
     if (redirectPath != undefined) res.redirect(redirectPath);
     else next();
@@ -160,6 +160,11 @@ module.exports = {
     //User Signin Methods
   //------------------ start ------------------
   signinUser: (req, res, next) => {
+    console.log("HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+    console.log(req.body);
+    console.log("HERE2!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+
+
     const db = mongoose.connection;
     var dbo = db
 
