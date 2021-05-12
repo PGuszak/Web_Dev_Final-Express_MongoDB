@@ -1,6 +1,7 @@
 "use strict";
 
 const { reset } = require("nodemon");
+const { post } = require("../../Classwork 8 - 9 - 10 - API and Deployment/recipe_app/routes/apiRoutes");
 
 const User = require("../models/user"),
   Post = require("../models/posts"),
@@ -45,7 +46,7 @@ module.exports = {
       })
   },
   indexView: (req, res) => {
-    res.render("users/index");
+    res.render("users/home");
   },
   new: (req, res) => {
     res.render("users/new");
@@ -57,7 +58,7 @@ module.exports = {
     User.findById(userId)
       .then(user => {
         res.locals.currentUser = user;
-        console.log(req.params.id);
+        //console.log(req.params.id);
         next();
       })
       .catch(error => {
@@ -138,7 +139,7 @@ module.exports = {
   authenticate: passport.authenticate("local", {
     failureRedirect: "/signin",
     failureFlash: "Failed to login.",
-    successRedirect: "/users/home",
+    successRedirect: "/home/${userId}",
     successFlash: "Logged in!"
   }),
 
@@ -159,8 +160,6 @@ module.exports = {
     //User Signin Methods
   //------------------ start ------------------
   signinUser: (req, res, next) => {
-    //console.log(req.body.username);
-
     const db = mongoose.connection;
     var dbo = db
 
@@ -175,7 +174,7 @@ module.exports = {
 
         if (result) {
           //console.log(result); //prints signed in user
-          res.locals.redirect = `/home/${result._id}`;
+          res.locals.redirect = `users/${result._id}/home`;
           res.locals.currentUser = result;
           //console.log("User ID:");
           //console.log(res.locals.currentUser._id);
@@ -340,5 +339,27 @@ module.exports = {
   showViewPosts: (req, res) => {
     res.render("users/myPosts");
   },
+
+  //idk if we even need this
+  filterUserPosts: (req,res,next) => {
+    let currentUser = res.locals.currentUser;
+    if (currentUser) {
+      let mappedPosts = res.locals.posts.map((Post) => {
+        let userPosts = currentUser.posts.some((userPosts) => {
+          return userCourse.equals(posts._id);
+        });
+        return Object.assign(posts.toObject(), {joined: userPosts});
+      });
+      res.locals.courses = mappedPosts;
+      next();
+    } else {
+      next();
+    }
+  },
+
+
+
+
+
   //------------------ end ------------------
 }

@@ -7,7 +7,9 @@ const user = require("./models/user");
 const express = require("express"),
     app = express(),
     //replace below then replace all routers (except one) with app
-    router = express.Router(), // this line should be router = require(./routes/index);
+    router = express.Router(),
+    // V this line should be
+    //router = require("./routes/index"),
     homeController = require("./controllers/homeControllers"),
     errorController = require("./controllers/errorController"),
     userController = require("./controllers/usersControllers"),
@@ -86,15 +88,10 @@ router.use(express.static("public"));  //can serve static content to users
 router.use(layouts);
 
 
-
-
-
-//normal routes
+//signup routes
 router.get("/", homeController.showSignIn); //this is what renders first in the layout.ejs file
 router.get("/signup", homeController.showSignUp);
 router.post("/signup", userController.create, userController.redirectView);
-
-
 
 
 //Login
@@ -103,14 +100,12 @@ router.get("/signin", homeController.showSignIn)
 router.post("/signin", userController.signinUser, userController.redirectView);
 
 
-
-
 //LogOut
-router.get("/logout", userController.logout, userController.redirectView);
+router.get("/users/logout", userController.logout, userController.redirectView);
 
 
 //HOME
-router.get("/home/:id", userController.showHome, userController.showViewHome);
+router.get("/users/:id/home", userController.showHome, userController.showViewHome);
 
 
 //userPage
@@ -118,10 +113,6 @@ router.get("/users/:id/userPage", userController.showUserPage, userController.sh
 
 
 //userPosts
-router.get("/users/:id/posts", userController.showPosts, userController.showViewPosts);
-//router.get("/posts/:id/new", userPostController.new); //Not need since we can create a post from main now
-
-
 router.post("/posts/:id/create",  userPostController.create);
 
 
@@ -136,9 +127,6 @@ router.get("/users/:id/friends", userController.showFriends, userController.show
 //userEdit
 router.get("/users/:id/edit", userController.edit, userController.showEdit);
 router.put("/users/:id/update", userController.update, userController.redirectView);
-//router.put("/users/:id/update", userController.update, redirectView);
-
-
 
 
 //error pages go to errorControler.js for the renders

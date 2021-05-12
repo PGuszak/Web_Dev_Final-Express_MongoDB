@@ -2,16 +2,15 @@ const router = require("express").Router(),
 apiRoutes = require("./apiRoutes"),
 errorRoutes = require("./errorRoutes"),
 homeRoutes = require("./homeRoutes"),
-userRoutes = require("./userRoutes"),
-signInRoutes = require("./signipRoutes"),
-signUpRoutes = require("./signUpRoutes")
+postsRoutes = require("./postsRoutes"),
+userRoutes = require("./usersRoutes");
 
-//define name spoces
-router.use("signUpRoutes", signUpRoutes);
-router.use("signInRoutes", signInRoutes);
+
+//define name spaces
+router.use("/posts", postsRoutes);
 router.use("/users", userRoutes);
-router.use("/home", homeRoutes);
 router.use("/api", apiRoutes);
+router.use("/", homeRoutes);
 router.use("/", errorRoutes);
 
 module.exports = router;
