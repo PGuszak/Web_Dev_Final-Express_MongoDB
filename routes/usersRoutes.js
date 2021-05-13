@@ -15,6 +15,9 @@ router.get("/:id/userPage", userController.showUserPage, userController.showView
 //userProjects
 router.get("/:id/projects", userController.showProjects, userController.showViewProjects);
 
+//posts
+router.get("/:id/posts", userController.showPosts, userController.showViewPosts);
+
 
 //userFriends
 router.get("/:id/friends", userController.showFriends, userController.showViewFriends);

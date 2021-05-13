@@ -10,7 +10,7 @@ userRoutes = require("./usersRoutes");
 router.use("/posts", postsRoutes);
 router.use("/users", userRoutes);
 router.use("/api", apiRoutes);
-router.use("", homeRoutes);
+router.use("/", homeRoutes);
 router.use("/", errorRoutes);
 
 module.exports = router;
