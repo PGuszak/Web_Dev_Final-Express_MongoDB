@@ -1,7 +1,138 @@
 <div">
-    <form method="PUT">
-        something here !!!!!!!!!!!!!!!
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Save</button>
+    <form method="POST" action="<%= `/users/${currentUser._id}/update?_method=PUT` %>">
+        <div class="container-fluid EditInfo">
+
+          <!-- Title -->
+          <div class="col rounded ">
+              <div class=" titleText text-center border-bottom">
+                User Information for <%= currentUser.Handle %>
+              </div>
+          </div>
+
+          <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-center whiteText">
+                First Name:
+              </div>
+
+              <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-center  whiteText">
+                <input  style="text-align: center;" type="text" name="firstName" id="firstName" value="<%= currentUser.firstName %>">
+              </div>
+          </div><br>
+
+          <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-center whiteText">
+                Last Name:
+              </div>
+
+              <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-center  whiteText">
+                <input  style="text-align: center;" type="text" name="lastName" id="lastName" value="<%= currentUser.lastName %>">
+              </div>
+          </div><br>
+
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-center whiteText">
+              Gender:
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-center  whiteText">
+              <input  style="text-align: center;" type="text" name="Gender" id="Gender" value="<%= currentUser.Gender %>">
+            </div>
+          </div><br>
+
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-center whiteText">
+              City, State:
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-center  whiteText">
+              <input  style="text-align: center;" type="text" name="City_State" id="City_State" value="<%= currentUser.City_State %>">
+            </div>
+          </div><br>
+
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-center whiteText">
+              Relationship:
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-center  whiteText">
+              <input  style="text-align: center;" type="text" name="Relationship" id="Relationship" value="<%= currentUser.Relationship %>">
+            </div>
+          </div><br>
+
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-center whiteText">
+              Highschool:
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-center  whiteText">
+              <input  style="text-align: center;" type="text" name="Highschool" id="Highschool" value="<%= currentUser.Highschool %>">
+            </div>
+          </div><br>
+
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-center whiteText">
+              University:
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-center  whiteText">
+              <input  style="text-align: center;" type="text" name="University" id="University" value="<%= currentUser.University %>">
+            </div>
+          </div><br>
+
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-center whiteText">
+              Work:
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-center  whiteText">
+              <input  style="text-align: center;" type="text" name="Work" id="Work" value="<%= currentUser.Work %>">
+            </div>
+          </div><br>
+
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-center whiteText">
+              Age:
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-center  whiteText">
+              <input  style="text-align: center;" type="text" name="Age" id="Age" value="<%= currentUser.Age %>">
+            </div>
+          </div><br>
+
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-center whiteText">
+              Email:
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-center  whiteText">
+              <input  style="text-align: center;" type="text" name="Email" id="Email" value="<%= currentUser.Email %>">
+            </div>
+          </div><br>
+
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-center whiteText">
+              DOB:
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-center  whiteText">
+              <input  style="text-align: center;" type="date" name="DOB" id="DOB" value="<%= currentUser.DOB %>">
+            </div>
+          </div><br>
+
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-center whiteText">
+              Bio:
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-center  whiteText">
+              <input  style="text-align: left;" type="text" class="form-control entrybox" rows="3" cols="85" name="Bio" id="Bio" value="<%= currentUser.Bio %>">
+            </div>
+          </div><br>
+            <div class="row">
+              <div class="col-lg-12 col-md-12 col-sm-12 col-12 d-flex justify-content-center   whiteText">
+                <button class=" btn btn-md btn-primary btn-block" style="width: 25vw;" type="submit">Save</button>
+            </div>
+        </div>
     </form>
   </div>
   

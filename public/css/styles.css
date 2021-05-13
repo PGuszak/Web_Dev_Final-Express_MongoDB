@@ -55,14 +55,18 @@ footer {
     background-color: #7289DA;
 }
 
-
-
-
-
 .userInfoRowsSingle {
     margin: auto;
     width:70vw !important;
     height:250px !important; 
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #212D94;
+}
+
+.EditInfo {
+    margin: auto;
+    width:70vw !important;
     margin-top: 10px;
     margin-bottom: 10px;
     background-color: #212D94;

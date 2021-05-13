@@ -71,14 +71,18 @@ module.exports = {
 
 
   update: (req, res, next) => {
+    console.log(req.body);
     let userId = req.params.id,
       userParams = getUserParams(req.body);
+
+    console.log(userParams);
 
     User.findByIdAndUpdate(userId, {
       $set: userParams
     })
-      .then(subscriber => {
+      .then(currentUser => {
         res.locals.redirect = `/users/${userId}/userPage`;
+        res.locals.currentUser = currentUser;
         next();
       })
       .catch(error => {
