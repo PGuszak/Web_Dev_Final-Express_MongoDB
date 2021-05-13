@@ -142,20 +142,28 @@
 
                     
 
-                    <table class="table whiteText ">
+                    <table class="table ">
 
-                        <% posts.forEach(post=> { %>
+                        <% currentUser.following.forEach(friend=> { %>
 
-                            
-                            <div class="row  border ">
 
-                                <div>
-                                    User: <%= post.userName %>
+                            <div class="container-fluid d-flex">
+                                <div class="">
+                                    
+                                        <div>
+                                            UserName: <%= friend.userName %>
+                                        </div>
+                                        <div>
+                                            UserID: <%= friend.userID %>
+                                        </div>
+                                    
                                 </div>
-
+                    
                             </div>
-
-                            
+                    
+                            <br>
+                    
+                    
                             <% }) %>
                     </table>
 

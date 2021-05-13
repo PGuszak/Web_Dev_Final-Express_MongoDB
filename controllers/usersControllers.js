@@ -205,6 +205,7 @@ module.exports = {
     User.findById(userId)
       .then(user => {
         res.locals.currentUser = user;
+        
         next();
       })
       .catch(error => {
@@ -215,12 +216,24 @@ module.exports = {
     res.render("users/myFriends");
   },
   
-
-  addFriends: (req, res, next) => {
+  addFollow: (req, res, next) => {
+    console.log("Congrats you made it")
+    console.log(req.body)
     let userId = req.params.id;
-    User.findById(userId)
+
+    var objFriends = { userName: req.body.userName, userID: req.body.userID };
+
+
+
+    User.findOneAndUpdate({ _id: userId }, {$push: {following: objFriends}})
+    
+    
+    
+    //{$push:{following: req.body.userID} }
+    //{$push:{following: {userName: req.body.userName, userID: req.body.userID}} }
       .then(user => {
         res.locals.currentUser = user;
+
         next();
       })
       .catch(error => {
@@ -282,8 +295,6 @@ module.exports = {
     res.render("users/userPage");
   },
   //------------------ end ------------------
-
-
 
 
   //User Project Methods

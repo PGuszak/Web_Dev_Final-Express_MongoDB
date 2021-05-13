@@ -19,15 +19,14 @@ router.get("/:id/projects", userController.showProjects, userController.showView
 router.get("/:id/posts", userController.showPosts, userController.showViewPosts);
 
 
-//userFriends
-router.get("/:id/friends", userController.showFriends, userController.showViewFriends);
-
-
 //userEdit
 router.get("/:id/edit", userController.edit, userController.showEdit);
+
 router.put("/:id/update", userController.update, userController.redirectView);
 
 //Friends
+router.put("/:id/addFollow", userController.addFollow, userController.showViewFriends);
+router.get("/:id/friends", userController.showFriends, userController.redirectView);
 
 
 module.exports = router;
