@@ -77,7 +77,6 @@ app.use((req, res, next) => {
     res.locals.loggedIn = req.isAuthenticated();
     res.locals.currentUser = req.user;
     next();
-
 });
 
 
@@ -87,7 +86,7 @@ app.use((req, res, next) => {
 app.use(express.static("public"));  //can serve static content to users
 app.use(layouts);
 
-/*
+/* //commented out for the name spaces here for notes
 //signup routes
 router.get("/", homeController.showSignIn); //this is what renders first in the layout.ejs file
 router.get("/signup", homeController.showSignUp);

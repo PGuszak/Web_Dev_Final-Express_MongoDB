@@ -27,6 +27,17 @@ body{
     margin: auto;
 }
 
+.flash {
+    background: rgba(193, 255, 193, .7);
+    color: #625a56;
+    width: 100%;
+    text-align: center;
+    padding: 10px 30px;
+    position: absolute;
+    top: 110px;
+    z-index: 2;
+  }
+
 .center {
     display: block;
     margin-left: auto;

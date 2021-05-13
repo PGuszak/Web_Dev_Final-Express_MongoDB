@@ -1,6 +1,7 @@
 "use strict";
 
 const { reset } = require("nodemon");
+const User = require("../models/user");
 const Post = require("../models/posts");
 
 
@@ -31,11 +32,9 @@ module.exports = {
         let courseId = req.params.id;
         var userName = '';
         console.log(req.body.currentUser);
-        //console.log("here???");
-
         User.findById(courseId)
             .then(user => {
-                //console.log(user.Username)
+                console.log(user.Username)
                 userName = user.Username
 
                 let newPost = new Post({
@@ -50,7 +49,7 @@ module.exports = {
                 Post.create(newPost)
                     .then(post => {
                         res.locals.course = post;
-                        res.redirect(`/home/${courseId}`);
+                        res.redirect(`/users/${courseId}/home`);
                         next();
                         //res.locals.redirect = `/home/${result._id}`;
 
