@@ -38,7 +38,8 @@ UserSchema = new Schema(
 
 
 UserSchema.plugin(passportLogicalMongoose, {
-    usernameField: "Username"
+    usernameField: "Username",
+    passwordField: 'Password'
   });
 
 module.exports = mongoose.model("User", UserSchema);

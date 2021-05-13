@@ -136,12 +136,14 @@ module.exports = {
     });
   },
 
-  authenticate: passport.authenticate("local", {
-    failureRedirect: "/signin",
-    failureFlash: "Failed to login.",
-    successRedirect: "/home",
-    successFlash: "Logged in!"
-  }),
+  authenticate: passport.authenticate('local', { failureRedirect: '/signin', failureFlash: true,
+
+  successRedirect: `/soemthjing23` }),
+  function(req, res) {
+  console.log("hello");
+  console.log(req);
+  res.redirect('/');
+  },
 
   logout: (req, res, next) => {
     req.logout();
@@ -160,11 +162,6 @@ module.exports = {
     //User Signin Methods
   //------------------ start ------------------
   signinUser: (req, res, next) => {
-    console.log("HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-    console.log(req.body);
-    console.log("HERE2!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-
-
     const db = mongoose.connection;
     var dbo = db
 
@@ -186,7 +183,7 @@ module.exports = {
           next();
 
         } else {
-          console.log("No document matches the provided query.");
+          req.flash("failure", "Error signing in");
           res.render("signin");
           next();
         }
@@ -225,9 +222,6 @@ module.exports = {
     User.findById(userId)
       .then(user => {
         res.locals.currentUser = user;
-
-
-
         Post.find().sort({ createdAt : `descending`})
           .then(posts => {
             res.locals.posts = posts;
@@ -238,8 +232,6 @@ module.exports = {
             console.log(`Error fetching course data: ${error.message}`);
             next(error);
           })
-
-
       })
       .catch(error => {
         console.log(`Error fetching user by ID: ${error.message}`);
