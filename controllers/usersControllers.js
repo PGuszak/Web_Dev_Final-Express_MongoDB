@@ -1,7 +1,7 @@
 "use strict";
 
 const { reset } = require("nodemon");
-//const { post } = require("../../Classwork 8 - 9 - 10 - API and Deployment/recipe_app/routes/apiRoutes");
+const { post } = require("../models/posts");
 
 const User = require("../models/user"),
   Post = require("../models/posts"),
