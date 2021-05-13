@@ -27,4 +27,8 @@ router.get("/:id/friends", userController.showFriends, userController.showViewFr
 router.get("/:id/edit", userController.edit, userController.showEdit);
 router.put("/:id/update", userController.update, userController.redirectView);
 
+//Friends
+
+
 module.exports = router;
+

@@ -29,7 +29,9 @@ UserSchema = new Schema(
         SecurityQ2: String,
         SecurityA2: String,
         SecurityQ3: String,
-        SecurityA3: String
+        SecurityA3: String,
+
+        following: [{ type: Schema.Types.ObjectId, ref: "Following" }]
     },
     {
         timestamps: true

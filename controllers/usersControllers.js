@@ -214,8 +214,21 @@ module.exports = {
   showViewFriends: (req, res) => {
     res.render("users/myFriends");
   },
-  //------------------ end ------------------
+  
 
+  addFriends: (req, res, next) => {
+    let userId = req.params.id;
+    User.findById(userId)
+      .then(user => {
+        res.locals.currentUser = user;
+        next();
+      })
+      .catch(error => {
+        console.log(`Error fetching user by ID: ${error.message}`);
+      })
+  },
+
+  //------------------ end ------------------
 
 
 
