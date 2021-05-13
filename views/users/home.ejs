@@ -31,7 +31,7 @@
 
                     <div class="col-lg-12 col-md-12 col-sm-12 col-12 d-flex justify-content-center ">
                         <%= currentUser.firstName %>
-                        <%= currentUser.lastName %></a>
+                            <%= currentUser.lastName %></a>
                     </div>
 
                 </div>
@@ -128,16 +128,39 @@
                     <div class="col-lg-12 col-md-12 col-sm-12 col-12 d-flex justify-content-center ">
                         <div class="">
                             <a class="" href="<%= `/users/${currentUser.id}/friends` %> " style="color: black">
-                                My Friends
+                                Followed Users
                             </a>
                         </div>
+                        
                     </div>
+                    
+
+                    
                 </div>
 
-                <div class="card-body ">
+                <div class="card-body friendsList">
+
+                    
+
+                    <table class="table whiteText ">
+
+                        <% posts.forEach(post=> { %>
+
+                            
+                            <div class="row  border ">
+
+                                <div>
+                                    User: <%= post.userName %>
+                                </div>
+
+                            </div>
+
+                            
+                            <% }) %>
+                    </table>
 
 
-    
+
                 </div>
 
             </div>
@@ -148,7 +171,7 @@
                 <span>
                     <input style="text-align: center;" class="footer_info_buttton" type="button"
                         value="More Information Here">
-                     <!-- link to an information page -->
+                    <!-- link to an information page -->
                 </span>
             </footer>
         </div>

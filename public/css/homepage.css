@@ -170,8 +170,14 @@ textarea {
     margin-bottom: 20px;
     margin-left: 40px;
     width: 500px;
-    height: 350px;
+    height: 100%;
     background-color: white;
+    
+}
+
+.friendsList{
+    overflow-y: scroll;
+    height: 300px;
 }
 
 /*End*/
