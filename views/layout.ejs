@@ -17,26 +17,26 @@
     <script src="https://kit.fontawesome.com/e3c832e492.js" crossorigin="anonymous"></script>
     <!-- css -->
     <link rel="stylesheet" href="/css/styles.css">
+
+    <div class="flashes">
+        <% if(flashMessages) { %>
+            <% if(flashMessages.success) { %>
+                <div class="flash success">
+                    <%= flashMessages.success %>
+                </div>
+            <% } else if(flashMessages.error) { %>
+                <div class="flash error">
+                    <%= flashMessages.error %>
+                </div>
+            <% } %>
+        <% } %> 
+    </div>
         
     </head>
 
     <body>
 
         <header>
-
-            <div class="flashes">
-                <% if(flashMessages) { %>
-                    <% if(flashMessages.success) { %>
-                        <div class="flash success">
-                            <%= flashMessages.success %>
-                        </div>
-                    <% } else if(flashMessages.error) { %>
-                        <div class="flash error">
-                            <%= flashMessages.error %>
-                        </div>
-                    <% } %>
-                <% } %> 
-            </div>
             
     <!-- Nav Bar -->
             <% if(currentUser) { %>
