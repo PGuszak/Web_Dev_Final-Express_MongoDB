@@ -26,7 +26,7 @@ router.put("/:id/update", userController.update, userController.redirectView);
 
 //Friends
 router.put("/:id/addFollow", userController.addFollow, userController.showViewFriends);
-router.get("/:id/friends", userController.showFriends, userController.redirectView);
+router.get("/:id/friends", userController.showFriends, userController.showViewFriends);
 
 
 module.exports = router;

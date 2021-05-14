@@ -15,7 +15,7 @@
               </div>
 
               <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-center  whiteText">
-                <input  style="text-align: center;" type="text" name="firstName" id="firstName" value="<%= currentUser.firstName %>">
+                <input  style="text-align: center;" type="text" name="firstName" id="firstName" value="<%= currentUser.firstName %>" autofocus>
               </div>
           </div><br>
 
@@ -118,6 +118,29 @@
               <input  style="text-align: center;" type="date" name="DOB" id="DOB" value="<%= currentUser.DOB %>">
             </div>
           </div><br>
+
+
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-center whiteText">
+              UserName:
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-center  whiteText">
+              <input   style="text-align: center;" type="text" name="Username" id="Username" value="<%= currentUser.Username %>" disabled>
+            </div>
+        </div><br>
+
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-center whiteText">
+            UniqueID:
+          </div>
+
+          <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-center  whiteText">
+            <input   style="text-align: center;" type="text" name="UniqueID" id="UniqueID" value="<%= currentUser.UniqueID %>" disabled>
+          </div>
+      </div><br>
+
+
 
           <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-center whiteText">
