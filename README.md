@@ -9,14 +9,23 @@ NodeJS, Express, and MongoDB Implementations:
 +-- controllers/
 |     +-- errorController.js
 |     +-- homeController.js
+|     +-- userPostsController.js
 |     +-- usersController.js
 +-- models/
-|	  +-- user.js
+|     +-- posts.js
+|     +-- user.js
 +-- node_modules/
 +-- public/
 |     +--css/
-|	  +--images/
-|	  +--js/
+|     +--images/
+|     +--js/
++-- routes/
+|     +-- apiRoutes.js
+|     +-- errorRoutes.js
+|     +-- homeRoutes.js
+|     +-- index.js
+|     +-- postsRoutes.js
+|     +-- usersRoutes.js
 +-- views/
 |     +-- error.ejs
 |     +-- home.ejs
@@ -27,6 +36,7 @@ NodeJS, Express, and MongoDB Implementations:
 +-- main.js
 +-- package.json
 +-- package-lock.json
++-- Procfile
 +-- README.md <- You are here
 +-- seed.ejs
 ```
@@ -76,6 +86,14 @@ Our current version of the user model looks like this:
         SecurityA3: String
         
 With an additional timestamp variable to record when the record is placed into the database. We were overall unsure of what was meant by the requirement of improving/refactoring this user model so we have left it largely as is per the advice of the aid. One possible thought currently would be to assign posts (another schema) as a list to a particular user. It may make more sense to do so the other way around however, this is largely a preference in design.
+
+## Following Users
+
+Users have an option to follow or unfollow any other user that exists on the website. If they choose to do so, they can view a list of those followed users as well as a link to their posts. This view is on a seperate link that any user can view to see their own follows. Users can also see the followed name as well as the followed user id.
+
+## User Edit and Creation Page
+
+Users on their profile have the option to click on a button to show their user information. This is the same information that was entered in the user account creation at sign up. This information can be edited at any time by the user by clicking on the edit button. This will render a user edit page with all the user's information displayed as well as entry boxes for all the information. Any amount of the information here can be changed which can be saved by the user. Once the user clicks save the user object will be updated in the database as well as the newly updated information displayed.
 
 ## To Run
 
